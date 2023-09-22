@@ -1,0 +1,45 @@
+CREATE DATABASE ipaw;
+USE ipaw;
+
+
+
+
+CREATE TABLE usuario (
+  dni BIGINT PRIMARY KEY,
+  nombre VARCHAR(30) NOT NULL,
+  apellido VARCHAR(40) NOT NULL,
+  direccion VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE mascota (
+  id INT  PRIMARY KEY,
+  dni_usuario BIGINT NOT NULL,
+  nombre VARCHAR(30) NOT NULL,
+  animal VARCHAR(30) NOT NULL,
+  raza VARCHAR(30) NOT NULL,
+  FOREIGN KEY (dni_usuario) REFERENCES usuario(dni)
+);
+
+CREATE TABLE reserva (
+  numero_reserva INT PRIMARY KEY,
+  dni_usuario BIGINT NOT NULL,
+  id_mascota INT NOT NULL,
+  servicio VARCHAR(30) NOT NULL,
+  f_inicio DATE NOT NULL,
+  f_fin DATE NOT NULL,
+  FOREIGN KEY (dni_usuario) REFERENCES usuario(dni),
+  FOREIGN KEY (id_mascota) REFERENCES mascota(id)
+);
+
+CREATE TABLE ventas (
+  numero_orden INT  PRIMARY KEY,
+  dni_usuario BIGINT NOT NULL,
+  producto VARCHAR(30) NOT NULL,
+  fecha_orden DATE NOT NULL,
+  FOREIGN KEY (dni_usuario) REFERENCES usuario(dni)
+);
+
+
+
+
+
