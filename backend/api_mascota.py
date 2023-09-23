@@ -3,9 +3,12 @@ from flask import Flask, jsonify,  request
 from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
+# Para el login
+from flask_login import login_user,login_required,current_user,LoginManager,UserMixin, logout_user
+# Para el login
 
 # Configura la conexión a la base de datos
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://postgres:pam645@127.0.0.1/cloudparcial'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://admin:pam645@127.0.0.1/cloudparcial'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Crea una instancia de SQLAlchemy
@@ -17,6 +20,7 @@ class Usuario(db.Model):
     __tablename__ = 'usuario'
     dni = db.Column(db.BigInteger, primary_key=True)
     nombre = db.Column(db.String(30), nullable=False)
+    contrasenia = db.Column(db.String(60), nullable=False)
     apellido = db.Column(db.String(40), nullable=False)
     direccion = db.Column(db.String(100), nullable=False)
 
