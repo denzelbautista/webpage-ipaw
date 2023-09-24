@@ -39,6 +39,16 @@ CREATE TABLE ventas (
   FOREIGN KEY (dni_usuario) REFERENCES usuario(dni)
 );
 
+CREATE TABLE mascotas_perdidas (
+  id INT  PRIMARY KEY,
+  dni_usuario BIGINT NOT NULL,
+  nombre VARCHAR(30) NOT NULL,
+  animal VARCHAR(30) NOT NULL,
+  raza VARCHAR(30) NOT NULL,
+  descripcion VARCHAR(200) NOT NULL,
+  estado BOOLEAN NOT NULL,
+  FOREIGN KEY (dni_usuario) REFERENCES usuario(dni)
+);
 
 
 
