@@ -28,6 +28,7 @@ class Usuario(db.Model):
             "dni": self.dni,
             "nombre": self.nombre,
             "apellido": self.apellido,
+            "contrasenia":self.contrasenia,
             "direccion": self.direccion
         }
 
