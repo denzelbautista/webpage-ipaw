@@ -19,6 +19,7 @@ class Usuario(db.Model):
     __tablename__ = 'usuario'
     dni = db.Column(db.BigInteger, primary_key=True)
     nombre = db.Column(db.String(30), nullable=False)
+    contrasenia = db.Column(db.String(60), nullable=False)
     apellido = db.Column(db.String(40), nullable=False)
     direccion = db.Column(db.String(100), nullable=False)
     def __repr__(self):
@@ -28,6 +29,7 @@ class Usuario(db.Model):
             "dni": self.dni,
             "nombre": self.nombre,
             "apellido": self.apellido,
+            "contrasenia":self.contrasenia,
             "direccion": self.direccion
         }
 
