@@ -14,18 +14,22 @@
       }
 
       .banner {
-        height: 100px;
-        background-color: #f0f0f0;
+        border-radius: 30px;
+        height: 80px;
+        background-color: #e7e7e7;
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 10px;
       }
+      .menu li {
+        width: 142px;
+        text-align: center;
+        justify-content: space-between;
+      }
 
-      .logo {
-        font-size: 48px;
-        font-weight: bold;
-        color: #ff9900;
+      .logo img {
+        width: 150px;
       }
 
       .menu {
@@ -37,11 +41,17 @@
 
       .menu li {
         margin: 10px;
+        height: 45px;
+
+        background-image: url(items.png);
+        background-size: 100% 100%;
       }
 
       .menu a {
-        text-decoration: none;
-        color: black;
+        /* aqui se colocaran los estilos de los elementos de la barra superior*/
+        display: block;
+        line-height: 40px; /* Esta línea centra el texto verticalmente */
+        text-align: center; /* Esta línea centra el texto horizontalmente */
       }
 
       .content {
@@ -50,8 +60,9 @@
       }
 
       .sidebar {
+        border-radius: 30px;
         width: 200px;
-        background-color: #e6e6e6;
+        background-color: #d3d1d1;
         padding: 10px;
       }
 
@@ -107,13 +118,16 @@
       }
 
       .footer {
+        margin-top: 20px;
         height: 50px;
-        background-color: #f0f0f0;
+        border-radius: 30px;
+        background-color: #aaaaaa;
         display: flex;
         align-items: center;
         justify-content: center;
       }
       .rightbar {
+        border-radius: 30px;
         width: 200px;
         background-color: #e6e6e6;
         padding: 10px;
@@ -137,7 +151,10 @@
   <body>
     <div class="container">
       <div class="banner">
-        <div class="logo">iPaw</div>
+        <div class="logo">
+          <!-- aqui colocaremos una imagen -->
+          <img src="/frontend/ipawv2.png" />
+        </div>
         <ul class="menu">
           <li><a href="#">Inicio</a></li>
           <li><a href="#">Categorías</a></li>
