@@ -8,6 +8,7 @@ CREATE TABLE usuario (
   dni BIGINT PRIMARY KEY,
   nombre VARCHAR(30) NOT NULL,
   apellido VARCHAR(40) NOT NULL,
+  contrasenia VARCHAR(20) NOT NULL,
   direccion VARCHAR(100) NOT NULL
 );
 
@@ -49,7 +50,6 @@ CREATE TABLE mascotas_perdidas (
   estado VARCHAR(15) NOT NULL,
   FOREIGN KEY (dni_usuario) REFERENCES usuario(dni)
 );
-
 
 
 
