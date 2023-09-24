@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 # Para el login
-from flask_login import login_user,login_required,current_user,LoginManager,UserMixin, logout_user
+#from flask_login import login_user,login_required,current_user,LoginManager,UserMixin, logout_user
 # Para el login
 
 # Configura la conexión a la base de datos
@@ -15,13 +15,13 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # Para el login
-login_manager = LoginManager()
-login_manager.init_app(app)
-app.secret_key = 'clave'
+#login_manager = LoginManager()
+#login_manager.init_app(app)
+#app.secret_key = 'clave'
 # Para el login
 
 #modelos
-class Usuario(UserMixin, db.Model):
+class Usuario(db.Model):
     __tablename__ = 'usuario'
     dni = db.Column(db.BigInteger, primary_key=True)
     nombre = db.Column(db.String(30), nullable=False)
@@ -59,6 +59,37 @@ class Ventas(db.Model):
     fecha_orden = db.Column(db.Date, nullable=False)
     usuario = db.relationship('Usuario', foreign_keys=[dni_usuario])
 
+
+# USUARIO
+@app.route('/usuarios', methods=["GET"])
+def get_usuarios():
+  usuarios = Usuario.query.all()
+  return jsonify(usuarios)
+
+@app.route('/usuarios', method=["POST"])
+def post_usuarios():
+  nuevo_usuario = Usuario(dni = request.get_json()['dni'],
+                          nombre = request.get_json()['nombre'], 
+                          contrasenia = request.get_json()['contrasenia'],
+                          apellido = request.get_json()['apellido'])
+  db.session.add(nuevo_usuario)
+  db.session.commit()
+  return 'Usuario creado :)', 201
+
+@app.route('/usuarios/<dni>', method=["DELETE"])
+def delete_usuarios(dni):
+  usuario = Usuario.query.get_or_404(dni)
+  db.session.delete(usuario)
+  db.session.commit()
+  return 'SUCCESS'
+
+@app.route('/usuarios/<dni>/mascotas/', method=["GET"]) 
+def get_usuarios_mascotas_perros(dni):
+  usuario = Usuario.query.get_or_404(dni) 
+  mascotas = usuario.mascotas 
+  return jsonify([mascota.nombre for mascota in mascotas]) # Devuelve los nombres de las mascotas en formato JSON
+
+# MASCOTAS
 @app.route('/mascotas', methods=["GET", "POST"])
 def get_post_mascotas():
   if request.method == "GET":

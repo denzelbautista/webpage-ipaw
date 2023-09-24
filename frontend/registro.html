@@ -1,0 +1,88 @@
+<!-- Este es el archivo registro.html -->
+<html>
+  <head>
+    <style>
+      /* Estilos css para la página web */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: white;
+        margin: 0;
+      }
+
+      .container {
+        width: 1000px; /* Ancho fijo para simular un monitor antiguo */
+        margin: 0 auto;
+        border: 1px solid black;
+      }
+
+      .logo {
+        margin-top: 15px;
+        text-align: center;
+      }
+
+      .logo img {
+        width: 250px;
+      }
+
+      .form {
+        width: 400px; /* Ancho fijo para el formulario */
+        margin: 20px auto; /* Centrar el formulario */
+        border: 1px solid black; /* Borde negro para el formulario */
+        padding: 20px;
+      }
+
+      .form h2 {
+        margin-top: 0;
+        text-align: center; /* Centrar el título */
+      }
+
+      .form p {
+        margin-bottom: 10px;
+      }
+
+      .form label {
+        display: block; /* Mostrar cada etiqueta en una línea */
+      }
+
+      .form input {
+        width: 100%; /* Ocupar todo el ancho del formulario */
+        border: 1px solid black; /* Borde negro para los campos de entrada */
+      }
+
+      .form button {
+        width: 100%; /* Ocupar todo el ancho del formulario */
+        border: none; /* Sin borde para el botón */
+        background-color: #ff9900; /* Color naranja para el botón */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+        <!-- aqui colocaremos una imagen -->
+        <img src="/frontend/ipawv2.png" />
+      </div>
+      <div class="form">
+        <h2>Registrarse</h2>
+        <p>Completa el siguiente formulario para crear tu cuenta en iPaw.</p>
+        <form action="#" method="post">
+          <p><label for="nombre">Nombre:</label></p>
+          <p><input type="text" id="nombre" name="nombre" required /></p>
+          <p><label for="apellido">Apellido:</label></p>
+          <p><input type="text" id="apellido" name="apellido" required /></p>
+          <p><label for="dni">DNI:</label></p>
+          <p><input type="text" id="dni" name="dni" required /></p>
+          <p><label for="contraseña">Contraseña:</label></p>
+          <p>
+            <input type="password" id="contraseña" name="contraseña" required />
+          </p>
+          <p><button type="submit">Registrarse</button></p>
+        </form>
+      </div>
+
+      <div class="footer">
+        <p>© 2023 iPaw. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </body>
+</html>

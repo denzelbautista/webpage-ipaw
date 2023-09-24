@@ -3,10 +3,6 @@ from flask import Flask, jsonify,  request
 from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
-# Para el login
-from flask_login import login_user,login_required,current_user,LoginManager,UserMixin, logout_user
-# Para el login
-
 # Configura la conexión a la base de datos
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://admin:pam645@127.0.0.1/cloudparcial'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
