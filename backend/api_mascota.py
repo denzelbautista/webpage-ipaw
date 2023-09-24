@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 # Configura la conexión a la base de datos
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://admin:pam645@127.0.0.1/cloudparcial'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:utec@localhost:3306/cloudparcial'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Crea una instancia de SQLAlchemy

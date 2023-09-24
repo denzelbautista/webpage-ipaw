@@ -1,6 +1,7 @@
 
 from flask import Flask, jsonify,  request
 from flask_sqlalchemy import SQLAlchemy
+import uuid
 app = Flask(__name__)
 
 # Para el login
@@ -8,7 +9,7 @@ app = Flask(__name__)
 # Para el login
 
 # Configura la conexión a la base de datos
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://admin:pam645@127.0.0.1/cloudparcial'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:utec@localhost:3306/cloudparcial'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Crea una instancia de SQLAlchemy
@@ -29,14 +30,35 @@ class Usuario(db.Model):
     apellido = db.Column(db.String(40), nullable=False)
     direccion = db.Column(db.String(100), nullable=False)
 
+    def __repr__(self):
+        return '<Usuario %r>' % self.nombre
+    def serialize(self):
+        return {
+            "dni": self.dni,
+            "nombre": self.nombre,
+            "apellido": self.apellido,
+            "direccion": self.direccion
+        }
+
 class Mascota(db.Model):
     __tablename__ = 'mascota'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.String(36),primary_key=True,unique=True,default=lambda: str(uuid.uuid4()), server_default=db.text("uuid_generate_v4()"))
     dni_usuario = db.Column(db.BigInteger, db.ForeignKey('usuario.dni'))
     nombre = db.Column(db.String(30), nullable=False)
     animal = db.Column(db.String(30), nullable=False)
     raza = db.Column(db.String(30), nullable=False)
     usuario = db.relationship('Usuario', foreign_keys=[dni_usuario])
+
+    def __repr__(self):
+        return '<Mascota %r>' % self.nombre
+    def serialize(self):
+        return {
+            "id": self.id,
+            "dni_usuario": self.dni_usuario,
+            "nombre": self.nombre,
+            "animal": self.animal,
+            "raza": self.raza
+        }
 
 class Reserva(db.Model):
     __tablename__ = 'reserva'
@@ -64,26 +86,28 @@ class Ventas(db.Model):
 @app.route('/usuarios', methods=["GET"])
 def get_usuarios():
   usuarios = Usuario.query.all()
-  return jsonify(usuarios)
+  usuarios_serialize = [usuarios.serialize() for usuarios in usuarios]
+  return jsonify({'success':True, 'data':usuarios_serialize})  
 
-@app.route('/usuarios', method=["POST"])
+@app.route('/usuarios', methods=["POST"])
 def post_usuarios():
-  nuevo_usuario = Usuario(dni = request.get_json()['dni'],
+  nuevo_usuario = Usuario(dni = int(request.get_json()['dni']),
                           nombre = request.get_json()['nombre'], 
                           contrasenia = request.get_json()['contrasenia'],
-                          apellido = request.get_json()['apellido'])
+                          apellido = request.get_json()['apellido'],
+                          direccion = request.get_json()['direccion'])
   db.session.add(nuevo_usuario)
   db.session.commit()
   return 'Usuario creado :)', 201
 
-@app.route('/usuarios/<dni>', method=["DELETE"])
+@app.route('/usuarios/<dni>', methods=["DELETE"])
 def delete_usuarios(dni):
   usuario = Usuario.query.get_or_404(dni)
   db.session.delete(usuario)
   db.session.commit()
   return 'SUCCESS'
 
-@app.route('/usuarios/<dni>/mascotas/', method=["GET"]) 
+@app.route('/usuarios/<dni>/mascotas/', methods=["GET"]) 
 def get_usuarios_mascotas_perros(dni):
   usuario = Usuario.query.get_or_404(dni) 
   mascotas = usuario.mascotas 
@@ -94,7 +118,8 @@ def get_usuarios_mascotas_perros(dni):
 def get_post_mascotas():
   if request.method == "GET":
     mascotas = Mascota.query.all()
-    return jsonify(mascotas)
+    mascotas_serialize = [mascotas.serialize() for mascotas in mascotas]
+    return jsonify({'success':True, 'data':mascotas_serialize})  
   
   elif request.method == "POST":
     nueva_mascota = Mascota(dni_usuario = request.get_json()['dni_usuario'], nombre = request.get_json()['nombre'], animal = request.get_json()['animal'], raza = request.get_json()['raza'])
