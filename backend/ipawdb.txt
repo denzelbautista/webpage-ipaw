@@ -46,7 +46,7 @@ CREATE TABLE mascotas_perdidas (
   animal VARCHAR(30) NOT NULL,
   raza VARCHAR(30) NOT NULL,
   descripcion VARCHAR(200) NOT NULL,
-  estado BOOLEAN NOT NULL,
+  estado VARCHAR(15) NOT NULL,
   FOREIGN KEY (dni_usuario) REFERENCES usuario(dni)
 );
 
