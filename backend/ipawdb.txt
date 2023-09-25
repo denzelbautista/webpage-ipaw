@@ -8,11 +8,12 @@ CREATE TABLE usuario (
   dni BIGINT PRIMARY KEY,
   nombre VARCHAR(30) NOT NULL,
   apellido VARCHAR(40) NOT NULL,
+  contrasenia VARCHAR(20) NOT NULL,
   direccion VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE mascota (
-  id INT  PRIMARY KEY,
+  id VARCHAR(36) PRIMARY KEY,
   dni_usuario BIGINT NOT NULL,
   nombre VARCHAR(30) NOT NULL,
   animal VARCHAR(30) NOT NULL,
@@ -23,7 +24,7 @@ CREATE TABLE mascota (
 CREATE TABLE reserva (
   numero_reserva INT PRIMARY KEY,
   dni_usuario BIGINT NOT NULL,
-  id_mascota INT NOT NULL,
+  id_mascota VARCHAR(36) NOT NULL,
   servicio VARCHAR(30) NOT NULL,
   f_inicio DATE NOT NULL,
   f_fin DATE NOT NULL,
@@ -39,7 +40,16 @@ CREATE TABLE ventas (
   FOREIGN KEY (dni_usuario) REFERENCES usuario(dni)
 );
 
-
+CREATE TABLE mascotas_perdidas (
+  id VARCHAR(36) PRIMARY KEY,
+  dni_usuario BIGINT NOT NULL,
+  nombre VARCHAR(30) NOT NULL,
+  animal VARCHAR(30) NOT NULL,
+  raza VARCHAR(30) NOT NULL,
+  descripcion VARCHAR(200) NOT NULL,
+  estado VARCHAR(15) NOT NULL,
+  FOREIGN KEY (dni_usuario) REFERENCES usuario(dni)
+);
 
 
 
