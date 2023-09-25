@@ -34,13 +34,15 @@ class Usuario(db.Model):
         }
 
 class Mascota(db.Model):
-    __tablename__ = 'mascota'
-    id = db.Column(db.Integer, primary_key=True)
+    _tablename_ = 'mascota'
+    id = db.Column(db.String(36),primary_key=True,unique=True,default=lambda: str(uuid.uuid4()), server_default=db.text("uuid_generate_v4()"))
     dni_usuario = db.Column(db.BigInteger, db.ForeignKey('usuario.dni'))
     nombre = db.Column(db.String(30), nullable=False)
     animal = db.Column(db.String(30), nullable=False)
     raza = db.Column(db.String(30), nullable=False)
     usuario = db.relationship('Usuario', foreign_keys=[dni_usuario])
+
+
     def __repr__(self):
         return '<Mascota %r>' % self.nombre
     def serialize(self):
@@ -91,6 +93,6 @@ def get_put_delete_mascotas(id):
 
 
 if __name__ =='__main__':
-    app.run(port=5000)
+    app.run(port=5001)
 
 
