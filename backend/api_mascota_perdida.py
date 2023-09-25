@@ -3,7 +3,7 @@
 from flask import Flask, jsonify,  request
 from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
-
+import uuid
 # Configura la conexión a la base de datos
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:utec@localhost:3306/cloudparcial'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -91,5 +91,5 @@ def get_put_delete_mascotas_perdidas(id):
 
 
 if __name__ =='__main__':
-    app.run(port=5002)
+    app.run(port=5003)
 
