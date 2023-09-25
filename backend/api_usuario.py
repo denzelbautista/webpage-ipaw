@@ -4,7 +4,7 @@ import uuid
 app = Flask(__name__)
 
 # Configura la conexión a la base de datos
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:utec@localhost:3306/cloudparcial'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://admin:1234@localhost:3306/ipaw'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Crea una instancia de SQLAlchemy
@@ -30,20 +30,20 @@ class Usuario(db.Model):
             "contrasenia":self.contrasenia,
             "direccion": self.direccion
         }
-   
+
 
 #rutas
 #todos los usuarios
-@app.route('/usuarios', methods=["GET"]) 
+@app.route('/usuarios', methods=["GET"])
 def get_usuarios():
-  usuarios = Usuario.query.all() 
+  usuarios = Usuario.query.all()
   usuarios_serialize = [usuario.serialize() for usuario in usuarios]
   return jsonify({'succes':True, 'data': usuarios_serialize})
 
 #un usuario según su dni
-@app.route('/usuarios/<dni>', methods=["GET"]) 
-def get_usuarios_by_dni(dni):
-  usuario = Usuario.query.get_or_404(dni) 
+@app.route('/usuarios/<dni>', methods=["GET"])
+def get_usuarios_bydni(dni):
+  usuario = Usuario.query.get_or_404(dni)
   return jsonify(usuario)
 
 #agregar
@@ -54,7 +54,7 @@ def create_usuario():
       nombre  =request.get_json()['nombre'],
       apellido = request.get_json()['apellido'],
       contrasenia = request.get_json()['contrasenia'],
-      direccion = request.get_json()['direccion']  
+      direccion = request.get_json()['direccion']
    )
    db.session.add(nuevo_usuario)
    db.session.commit()
@@ -62,13 +62,13 @@ def create_usuario():
 
 #editar
 @app.route('/usuarios/<dni>', methods = ["PUT"])
-def update_usuario(dni):
+def put_usuario(dni):
    usuario = Usuario.query.get_or_404(dni)
    usuario.dni = request.get_json()['dni'],
    usuario.nombre  =request.get_json()['nombre'],
    usuario.apellido = request.get_json()['apellido'],
    usuario.contrasenia = request.get_json()['contrasenia'],
-   usuario.direccion = request.get_json()['direccion']  
+   usuario.direccion = request.get_json()['direccion']
    db.session.commit()
    return 'Usuario actualizado :)',201
 
@@ -83,10 +83,10 @@ def delete_usuario(dni):
 
 
 
-@app.route('/usuarios/<dni>/mascotas/', methods=["GET"]) 
+@app.route('/usuarios/<dni>/mascotas/', methods=["GET"])
 def get_usuarios_mascotas(dni):
-  usuario = Usuario.query.get_or_404(dni) 
-  mascotas = usuario.mascotas 
+  usuario = Usuario.query.get_or_404(dni)
+  mascotas = usuario.mascotas
   return jsonify([mascota.nombre for mascota in mascotas])# Devuelve los nombres de las mascotas en formato JSON
 
 if __name__ =='__main__':
