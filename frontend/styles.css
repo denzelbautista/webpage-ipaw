@@ -1,0 +1,146 @@
+/* Estilos css para la página web */
+body {
+  font-family: Arial, sans-serif;
+  background-color: white;
+  margin: 0;
+}
+
+.container {
+  width: 1000px; /* Ancho fijo para simular un monitor antiguo */
+  margin: 0 auto;
+}
+
+.banner {
+  margin-top: 15px;
+  border-radius: 30px;
+  height: 80px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+.menu li {
+  width: 142px;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.logo img {
+  width: 220px;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  margin: 5px;
+  height: 45px;
+
+  background-image: url(items.png);
+  background-size: 100% 100%;
+}
+
+.menu a {
+  /* aqui se colocaran los estilos de los elementos de la barra superior*/
+  display: block;
+  line-height: 40px; /* Esta línea centra el texto verticalmente */
+  text-align: center; /* Esta línea centra el texto horizontalmente */
+}
+
+.content {
+  display: flex;
+  margin-top: 20px;
+}
+
+.sidebar {
+  border-radius: 30px;
+  width: 200px;
+  background-color: #d3d1d1;
+  padding: 10px;
+}
+
+.sidebar h3 {
+  margin-top: 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.main {
+  width: 600px;
+  padding: 10px;
+}
+
+.main h2 {
+  margin-top: 0;
+}
+
+.main p {
+  text-align: justify;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.item img {
+  width: 200px;
+  height: 200px; /* Imágenes cuadradas */
+  border: 1px solid black; /* Borde negro para las imágenes */
+}
+
+.item-info {
+  margin-left: 20px;
+}
+
+.item-info h3 {
+  margin-top: 0;
+}
+
+.item-info p {
+  margin-bottom: 10px;
+}
+
+.footer {
+  margin-top: 20px;
+  height: 50px;
+  border-radius: 30px;
+  background-color: #aaaaaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rightbar {
+  border-radius: 30px;
+  width: 200px;
+  background-color: #e6e6e6;
+  padding: 10px;
+}
+
+.rightbar h3 {
+  margin-top: 0;
+}
+
+.rightbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.rightbar li {
+  margin-bottom: 10px;
+}
