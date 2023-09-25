@@ -4,7 +4,7 @@ import uuid
 app = Flask(__name__)
 
 # Configura la conexión a la base de datos
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://admin:1234@localhost:3306/ipaw'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:utec@localhost:3306/ipaw'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Crea una instancia de SQLAlchemy
@@ -90,7 +90,7 @@ def get_usuarios_mascotas(dni):
   return jsonify([mascota.nombre for mascota in mascotas])# Devuelve los nombres de las mascotas en formato JSON
 
 if __name__ =='__main__':
-    app.run(port=5000)
+    app.run(port=5001)
 
 
 
