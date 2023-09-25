@@ -42,7 +42,7 @@ def get_usuarios():
 
 #un usuario según su dni
 @app.route('/usuarios/<dni>', methods=["GET"]) 
-def get_usuarios(dni):
+def get_usuarios_by_dni(dni):
   usuario = Usuario.query.get_or_404(dni) 
   return jsonify(usuario)
 
@@ -62,7 +62,7 @@ def create_usuario():
 
 #editar
 @app.route('/usuarios/<dni>', methods = ["PUT"])
-def create_usuario(dni):
+def update_usuario(dni):
    usuario = Usuario.query.get_or_404(dni)
    usuario.dni = request.get_json()['dni'],
    usuario.nombre  =request.get_json()['nombre'],
@@ -89,6 +89,8 @@ def get_usuarios_mascotas(dni):
   mascotas = usuario.mascotas 
   return jsonify([mascota.nombre for mascota in mascotas])# Devuelve los nombres de las mascotas en formato JSON
 
+if __name__ =='__main__':
+    app.run(port=5000)
 
 
 
