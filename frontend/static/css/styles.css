@@ -41,7 +41,7 @@ body {
   margin: 5px;
   height: 45px;
 
-  background-image: url(items.png);
+  background-image: url(/static/images/items.png);
   background-size: 100% 100%;
 }
 
