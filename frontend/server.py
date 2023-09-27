@@ -12,6 +12,15 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route ('/login', methods=['GET'])
+def login ():
+  return render_template ('login.html')
+
+@app.route ('/registro', methods=['GET'])
+def registro ():
+  return render_template ('registro.html')
+
+
 
 # Run the app
 if __name__ == '__main__':

@@ -23,6 +23,7 @@ body {
 .menu li {
   width: 142px;
   text-align: center;
+  padding-top: 12px;
   justify-content: space-between;
 }
 
@@ -31,6 +32,11 @@ body {
 }
 
 .menu {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: large;
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
   list-style: none;
   display: flex;
   margin: 0;
