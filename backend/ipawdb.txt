@@ -24,12 +24,12 @@ CREATE TABLE mascota (
 CREATE TABLE reserva (
   numero_reserva INT PRIMARY KEY,
   dni_usuario BIGINT NOT NULL,
-  id_mascota VARCHAR(36) NOT NULL,
+  nombre_mascota VARCHAR(30) NOT NULL,
   servicio VARCHAR(30) NOT NULL,
   f_inicio DATE NOT NULL,
   f_fin DATE NOT NULL,
   FOREIGN KEY (dni_usuario) REFERENCES usuario(dni),
-  FOREIGN KEY (id_mascota) REFERENCES mascota(id)
+  FOREIGN KEY (nombre_mascota) REFERENCES mascota(nombre)
 );
 
 CREATE TABLE ventas (
@@ -46,6 +46,7 @@ CREATE TABLE mascotas_perdidas (
   nombre VARCHAR(30) NOT NULL,
   animal VARCHAR(30) NOT NULL,
   raza VARCHAR(30) NOT NULL,
+  foto VARCHAR(40) NOT NULL,
   descripcion VARCHAR(200) NOT NULL,
   estado VARCHAR(15) NOT NULL,
   FOREIGN KEY (dni_usuario) REFERENCES usuario(dni)
