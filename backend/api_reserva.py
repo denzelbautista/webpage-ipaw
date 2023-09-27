@@ -57,6 +57,16 @@ class Reserva(db.Model):
     servicio = db.Column(db.String(30), nullable = False)
     f_inicio = db.Column(db.DateTime, nullable = False)
     f_fin = db.Column(db.DateTime, nullable = False)
+    def __repr__(self):
+        return '<Reserva %r>' % self.nombre
+    def serialize(self):
+        return {
+            "dni_usuario": self.dni_usuario,
+            "nombre_mascota": self.nombre_mascota,
+            "servicio": self.servicio,
+            "f_inicio":self.f_inicio,
+            "f_fin": self.f_fin
+        }
 
 
 @app.route('/reservas', methods = ["GET","POST"])
@@ -67,7 +77,7 @@ def reservas():
         return jsonify({'success':True, 'data':serialized})
 
     data = request.get_json()
-    nueva = Reserva(dni_usuario = data['dni'], id_mascota = data['mascota'], servicio = data['servicio'], f_inicio = data['f_inicio'], f_fin = data['f_fin'])
+    nueva = Reserva(dni_usuario = data['dni_usuario'], nombre_mascota = data['nombre_mascota'], servicio = data['servicio'], f_inicio = data['f_inicio'], f_fin = data['f_fin'])
     db.session.add(nueva)
     db.session.commit()
 
