@@ -73,8 +73,8 @@ def reservas():
 
     return 'SUCCESS'
 
-@app.route('reservas/<id>', methods = ["GET","PUT","DELETE"])
-def reservas(id):
+@app.route('/reservas/<id>', methods = ["GET","PUT","DELETE"])
+def reservas_id(id):
     data = Reserva.query.get_or_404(id)
     json = request.get_json()
     if request.method == 'GET':
