@@ -1,7 +1,12 @@
 from flask import Flask, jsonify,  request
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 import uuid
 app = Flask(__name__)
+
+CORS(app, origins='http://127.0.0.1:5000')
+
+# Resto de tu código aquí
 
 # Configura la conexión a la base de datos
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:utec@localhost:3306/ipaw'
