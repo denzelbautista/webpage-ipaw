@@ -20,7 +20,9 @@ def login ():
 def registro ():
   return render_template ('registro.html')
 
-
+@app.route('/registro_mascota', methods = ['GET'])
+def registro_mascota():
+   return render_template('mascota.html')
 
 # Run the app
 if __name__ == '__main__':
