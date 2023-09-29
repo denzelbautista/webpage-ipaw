@@ -51,6 +51,16 @@ def get_usuarios_bydni(dni):
   usuario = Usuario.query.get_or_404(dni)
   return jsonify(usuario)
 
+@app.route('/usuario/login', methods = ['PUT'])
+def login_user():
+    data = request.get_json()
+    usuario = Usuario.query.get_or_404(data['dni'])
+    if not usuario:
+      return 'NOT FOUND'
+    if data['contrasenia'] == usuario.contrasenia:
+       return 'SUCCESS'
+    return 'WRONG PASSWORD'
+
 #agregar
 @app.route('/usuarios', methods = ["POST"])
 def create_usuario():
