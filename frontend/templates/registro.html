@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="/static/images/ipaw.ico" />
 
-    <!-- importamos los estilos y funciones js-->
+    <!-- Importamos los estilos y funciones JS -->
     <link rel="stylesheet" href="/static/css/registro.css" />
     <script src="/static/js/regscripts.js"></script>
     <title>Registro iPaw</title>
@@ -14,63 +14,36 @@
   <body>
     <div class="container">
       <div class="logo">
-        <!-- aqui colocaremos una imagen -->
+        <!-- Aquí colocaremos una imagen -->
         <img src="/static/images/ipawv2.png" />
       </div>
       <div class="form">
         <h2>Registrarse</h2>
         <p>Completa el siguiente formulario para crear tu cuenta en iPaw.</p>
-        <form id="regForm" method="post" action="#">
-          <div>
+        <form id="regForm" action="#" method="post">
+          <div class="form-group">
             <label for="nombre">Nombre:</label>
-            <input
-              type="text"
-              id="nombre"
-              name="nombre"
-              required
-              minlength="3"
-            />
+            <input type="text" id="nombre" name="nombre" required />
           </div>
-          <div>
+          <div class="form-group">
             <label for="apellido">Apellido:</label>
-            <input
-              type="text"
-              id="apellido"
-              name="apellido"
-              required
-              minlength="3"
-            />
+            <input type="text" id="apellido" name="apellido" required />
           </div>
-          <div>
-            <label for="contraseña">Contraseña:</label>
-            <input
-              type="password"
-              id="contrasenia"
-              name="contrasenia"
-              required
-              minlength="8"
-            />
+          <div class="form-group">
+            <label for="contrasenia">Contraseña:</label>
+            <input type="password" id="contrasenia" name="contrasenia" required />
           </div>
-          <div>
+          <div class="form-group">
             <label for="dni">DNI:</label>
-            <input
-              type="text"
-              id="dni"
-              name="dni"
-              required
-              minlength="8"
-              maxlength="8"
-            />
+            <input type="text" id="dni" name="dni" required />
           </div>
-          <div>
+          <div class="form-group">
             <label for="direccion">Dirección:</label>
             <input type="text" id="direccion" name="direccion" required />
           </div>
         </form>
-        <button id="btnSend" type="submit" form="regForm">Enviar</button>
-      </div>
-      <div class="footer">
-        <p>© 2023 iPaw. Todos los derechos reservados.</p>
+        <button id="btnSend" type="button" form="regForm">Enviar</button>
+        <div id="mensaje"></div>
       </div>
     </div>
   </body>
