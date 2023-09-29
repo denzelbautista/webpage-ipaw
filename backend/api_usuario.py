@@ -55,6 +55,8 @@ def get_usuarios_bydni(dni):
 def login_user():
     data = request.get_json()
     usuario = Usuario.query.get_or_404(data['dni'])
+    print(data)
+    print("-----------------------------------------------------")
     if not usuario:
       return 'NOT FOUND'
     if data['contrasenia'] == usuario.contrasenia:
