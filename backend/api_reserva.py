@@ -54,7 +54,7 @@ class Reserva(db.Model):
     __tablename__ = 'reserva'
     numero_reserva = db.Column(db.BigInteger, primary_key = True)
     dni_usuario = db.Column(db.BigInteger, db.ForeignKey('usuario.dni'))
-    id_mascota = db.Column(db.String(36), db.ForeignKey('mascota.id'),primary_key=True,unique=True)
+    nombre_mascota = db.Column(db.String(30), nullable = False)
     servicio = db.Column(db.String(30), nullable = False)
     f_inicio = db.Column(db.DateTime, nullable = False)
     f_fin = db.Column(db.DateTime, nullable = False)
