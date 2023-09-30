@@ -1,0 +1,5 @@
+docker run -d --rm --name mysql -e MYSQL_ROOT_PASSWORD=utec -p 3306:3306 mysql
+
+pa entrar: 
+
+docker exec -it mysql bash

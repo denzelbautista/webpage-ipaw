@@ -1,8 +1,6 @@
 # api mascotas perdidas
-import cloudinary
-import cloudinary.api
-import cloudinary.uploader
 import uuid
+import requests
 from flask import Flask, jsonify,  request
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
@@ -10,13 +8,6 @@ app = Flask(__name__)
 # Configura la conexión a la base de datos
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:utec@localhost:3306/ipaw'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-
-cloudinary.config(
-    cloud_name="ds5u62yaw",
-    api_key="124931792445298",
-    api_secret="NVaq4gDmZ2KVWU0M_MlTJIGeLGA"
-)
 
 # Crea una instancia de SQLAlchemy
 db = SQLAlchemy(app)
@@ -90,23 +81,18 @@ def create_mascotaperdida():
     if file.filename == '':
         return 'No image selected!', 400
 
+    # Subimos la imagen al servicio de imgBB y obtenemos el nombre del archivo
+    response = requests.post('https://api.imgbb.com/1/upload',
+                             data={'key': '2adc25aee373fb46c2d721f17defe3d4'}, files={'image': file})
+
+    # Obtenemos el URL de la imagen desde imgBB
+    image_url = response.json()['data']['display_url']
+
+    # Guardamos el URL de la imagen en el atributo imagen de la base de datos
+
     mascota_p = Mascotas_perdidas(dni_usuario=dni_usuario, nombre=nombre, animal=animal, raza=raza,
-                                  descripcion=descripcion, estado=estado)
-
+                                  descripcion=descripcion, estado=estado, image=image_url)
     db.session.add(mascota_p)
-    db.session.commit()
-
-    # Subimos la imagen a Cloudinary usando su API
-    response = cloudinary.uploader.upload(file, folder="src/")
-
-    print("------------------------------------------------------------")
-    print(response)
-    print("------------------------------------------------------------")
-    # Obtenemos la URL de la imagen desde la respuesta
-    image_url = response['url']
-
-    # Guardamos la URL de la imagen en el atributo imagen de la base de datos
-    mascota_p.image = image_url
 
     db.session.commit()
 
