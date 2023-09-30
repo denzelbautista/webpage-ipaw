@@ -1,24 +1,32 @@
-/* Estilos css para la página web */
+html {
+  background: #f0f0f0; /* color de fondo */
+  box-shadow: inset 0 0 20px black; /* sombra interna con color negro y radio de 20px */
+  z-index: 9999; /* orden de apilamiento alto */
+  filter: blur(0.7px);
+}
+
 body {
+  background-image: url("/static/images/paws.png");
+  background-size: 30%;
+
   font-family: Arial, sans-serif;
-  background-color: white;
   margin: 0;
 }
 
 .container {
+  background-color: white;
   width: 1000px; /* Ancho fijo para simular un monitor antiguo */
   margin: 0 auto;
 }
 
 .banner {
-  margin-top: 15px;
-  border-radius: 30px;
-  height: 80px;
-  background-color: #ffffff;
+  height: 130px;
+  background-color: #5b86ff;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .menu li {
   width: 142px;
@@ -60,13 +68,11 @@ body {
 
 .content {
   display: flex;
-  margin-top: 20px;
 }
 
 .sidebar {
-  border-radius: 30px;
   width: 200px;
-  background-color: #d3d1d1;
+  background-color: #dba50e;
   padding: 10px;
 }
 
@@ -122,18 +128,15 @@ body {
 }
 
 .footer {
-  margin-top: 20px;
   height: 50px;
-  border-radius: 30px;
   background-color: #aaaaaa;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .rightbar {
-  border-radius: 30px;
   width: 200px;
-  background-color: #e6e6e6;
+  background-color: #dba50e;
   padding: 10px;
 }
 

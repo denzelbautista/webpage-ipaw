@@ -7,7 +7,7 @@ import uuid
 CORS(app, origins='http://127.0.0.1:5000')
 
 # Configura la conexión a la base de datos
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://admin:1234@localhost:3306/ipaw'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:utec@localhost:3306/ipaw'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Crea una instancia de SQLAlchemy

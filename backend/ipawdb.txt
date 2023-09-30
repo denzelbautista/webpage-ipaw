@@ -1,9 +1,6 @@
 CREATE DATABASE ipaw;
 USE ipaw;
 
-
-
-
 CREATE TABLE usuario (
   dni BIGINT PRIMARY KEY,
   nombre VARCHAR(30) NOT NULL,
@@ -46,7 +43,7 @@ CREATE TABLE mascotas_perdidas (
   nombre VARCHAR(30) NOT NULL,
   animal VARCHAR(30) NOT NULL,
   raza VARCHAR(30) NOT NULL,
-  foto VARCHAR(40) NOT NULL,
+  image VARCHAR(500) NOT NULL,
   descripcion VARCHAR(200) NOT NULL,
   estado VARCHAR(15) NOT NULL,
   FOREIGN KEY (dni_usuario) REFERENCES usuario(dni)

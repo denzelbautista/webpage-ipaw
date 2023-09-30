@@ -1,5 +1,5 @@
 body {
-  background-image: url('/static/images/monitor.jpeg');
+  background-image: url("/static/images/monitor.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -18,9 +18,14 @@ body {
   border: 1px solid black;
   text-align: center;
   padding: 10px;
-  background-color: rgba(226, 204, 159, 0.7); /* Cambiado a un color con transparencia */
+  background-color: rgba(
+    226,
+    204,
+    159,
+    0.7
+  ); /* Cambiado a un color con transparencia */
   color: #333;
-  font-family: 'Verdana', sans-serif;
+  font-family: "Verdana", sans-serif;
   border-radius: 150px;
   margin-top: 5vh; /* Agregado margen superior para centrar verticalmente */
 }
@@ -37,10 +42,10 @@ body {
   width: 600px;
   margin: 15px auto;
   padding: 15px;
-   /* Cambiado a un color con transparencia */
+  /* Cambiado a un color con transparencia */
   color: #333;
   text-align: center;
-  font-family: 'Verdana', sans-serif;
+  font-family: "Verdana", sans-serif;
 }
 
 .form h2 {
@@ -53,7 +58,7 @@ body {
 
 .form label {
   display: block;
-  font-family: 'Verdana', sans-serif;
+  font-family: "Verdana", sans-serif;
   padding: 2px;
 }
 
@@ -67,7 +72,7 @@ body {
   background-color: rgba(235, 208, 152, 0.7);
   padding: 10px;
   margin-bottom: 20px;
-  font-family: 'Verdana', sans-serif;
+  font-family: "Verdana", sans-serif;
   border-radius: 500px; /* Valor alto para hacerlos ovalados */
 }
 
@@ -82,7 +87,7 @@ body {
   border-radius: 50%; /* Hace el botón circular */
   cursor: pointer;
   text-transform: uppercase;
-  font-family: 'Verdana', sans-serif;
+  font-family: "Verdana", sans-serif;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 

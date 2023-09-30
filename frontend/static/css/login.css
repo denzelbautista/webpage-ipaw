@@ -1,12 +1,14 @@
 /* Estilos css para la página web */
 body {
   font-family: Arial, sans-serif;
-  background-color: white;
+  background-color: rgb(250, 219, 135);
   margin: 0;
 }
 
 .container {
   width: 1000px; /* Ancho fijo para simular un monitor antiguo */
+  height: 650px; /* Alto fijo para simular un monitor antiguo */
+  background-color: white;
   margin: 0 auto;
   border: 1px solid black;
 }
