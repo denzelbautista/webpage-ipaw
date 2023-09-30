@@ -24,6 +24,10 @@ def registro ():
 def registro_mascota():
    return render_template('mascota.html')
 
+@app.route('/reservar')
+def reserva():
+   return render_template('reserva.html')
+
 # Run the app
 if __name__ == '__main__':
     app.run(debug=True)

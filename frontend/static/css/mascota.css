@@ -1,26 +1,55 @@
-/* Estilos css para la página web */
 body {
-  font-family: Arial, sans-serif;
-  background-color: white;
+  background-image: url("/static/images/monitor.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Cambiado a 100vh para ocupar toda la altura de la ventana */
   margin: 0;
+  padding: 0;
 }
 
 .container {
-  width: 1000px; /* Ancho fijo para simular un monitor antiguo */
-  margin: 0 auto;
+  width: 90%;
+  max-width: 750px;
+  max-height: 750px;
   border: 1px solid black;
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(
+    226,
+    204,
+    159,
+    0.7
+  ); /* Cambiado a un color con transparencia */
+  color: #333;
+  font-family: "Verdana", sans-serif;
+  border-radius: 150px;
+  margin-top: 5vh; /* Agregado margen superior para centrar verticalmente */
+}
+
+.logo {
+  margin-top: 15px;
+}
+
+.logo img {
+  width: 250px;
 }
 
 .form {
-  width: 400px; /* Ancho fijo para el formulario */
-  margin: 20px auto; /* Centrar el formulario */
-  border: 1px solid black; /* Borde negro para el formulario */
-  padding: 20px;
+  width: 600px;
+  margin: 15px auto;
+  padding: 15px;
+  /* Cambiado a un color con transparencia */
+  color: #333;
+  text-align: center;
+  font-family: "Verdana", sans-serif;
 }
 
 .form h2 {
   margin-top: 0;
-  text-align: center; /* Centrar el título */
 }
 
 .form p {
@@ -28,23 +57,49 @@ body {
 }
 
 .form label {
-  display: block; /* Mostrar cada etiqueta en una línea */
+  display: block;
+  font-family: "Verdana", sans-serif;
+  padding: 2px;
 }
 
-.form input {
-  width: 100%; /* Ocupar todo el ancho del formulario */
-  border: 1px solid black; /* Borde negro para los campos de entrada */
+/* Estilo ovalado para los campos de entrada */
+.form input[type="text"],
+.form select,
+.form input[type="password"],
+.form input[type="date"] {
+  width: 75%;
+  border: none;
+  background-color: rgba(235, 208, 152, 0.7);
+  padding: 10px;
+  margin-bottom: 20px;
+  font-family: "Verdana", sans-serif;
+  border-radius: 500px; /* Valor alto para hacerlos ovalados */
 }
 
+/* Estilo circular para el botón */
 .form button {
-  width: 100%; /* Ocupar todo el ancho del formulario */
-  border: none; /* Sin borde para el botón */
-  background-color: #ff9900; /* Color naranja para el botón */
+  width: 100px; /* Ancho fijo para hacerlo circular */
+  height: 100px; /* Altura fija para hacerlo circular */
+  border: none;
+  background-color: #ff9900;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 50%; /* Hace el botón circular */
+  cursor: pointer;
+  text-transform: uppercase;
+  font-family: "Verdana", sans-serif;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
-.logo img {
-  width: 250px;
+
+/* Cambio de color al acercarse y agrandamiento del botón */
+.form button:hover {
+  background-color: #ff6600;
+  transform: scale(1.05);
 }
-.logo {
-  margin-top: 15px;
-  text-align: center;
+
+/* Estilo para agrupar los campos en una sola línea */
+.form .form-group {
+  display: inline-block;
+  margin-right: 10px; /* Espacio entre los campos */
+  vertical-align: top; /* Alineación superior para mantenerlos en línea */
 }
