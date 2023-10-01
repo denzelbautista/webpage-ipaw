@@ -1,7 +1,4 @@
 html {
-  background: #f0f0f0; /* color de fondo */
-  box-shadow: inset 0 0 20px black; /* sombra interna con color negro y radio de 20px */
-  z-index: 9999; /* orden de apilamiento alto */
   filter: blur(0.7px);
 }
 
@@ -33,10 +30,6 @@ body {
   text-align: center;
   padding-top: 12px;
   justify-content: space-between;
-}
-
-.logo img {
-  width: 220px;
 }
 
 .menu {
@@ -94,15 +87,17 @@ body {
   width: 600px;
   padding: 10px;
   background-image: url("/static/images/pawstra.png");
-  background-color: rgba(255, 255, 255, 0.5); /* Cambia el valor de la opacidad (0.5 en este ejemplo) */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.5
+  ); /* Cambia el valor de la opacidad (0.5 en este ejemplo) */
   background-size: 40%;
 }
 
-
-
 .main2 {
-  width:200px;
-  padding: 10px;
+  width: 200px;
 }
 
 .main h2 {
@@ -177,8 +172,6 @@ body {
 
 /* Estilos para el cuadro de la mascota */
 .mascota {
-  display: flex;
-  flex-direction: column;
   align-items: center;
 }
 
@@ -191,16 +184,20 @@ body {
   margin-bottom: 10px;
 }
 
-.container2{
+.container2 {
   width: 40%;
-  max-width: 300px;
-  max-height: 600px;
+  width: 600px;
   border: 10px solid rgb(84, 92, 119);
   text-align: center;
   padding: 5px;
-  background-color: rgba(236, 194, 7,0.92); /* Cambiado a un color con transparencia */
+  background-color: rgba(
+    236,
+    194,
+    7,
+    0.92
+  ); /* Cambiado a un color con transparencia */
   color: #333;
-  font-family: 'Verdana', sans-serif;
+  font-family: "Verdana", sans-serif;
   border-radius: 150px;
   margin-top: 5vh; /* Agregado margen superior para centrar verticalmente */
 }
@@ -221,24 +218,15 @@ body {
   transform: scale(1.1);
 }
 
-
-
-.logo {
-  margin-top: 15px;
-}
-
 .logo img {
-  width: 250px;
+  width: 220px;
 }
 
 .form {
-  width: 600px;
-  margin: 15px auto;
-  padding: 15px;
-   /* Cambiado a un color con transparencia */
+  /* Cambiado a un color con transparencia */
   color: #333;
   text-align: center;
-  font-family: 'Verdana', sans-serif;
+  font-family: "Verdana", sans-serif;
 }
 
 .form h2 {
@@ -251,7 +239,7 @@ body {
 
 .form label {
   display: block;
-  font-family: 'Verdana', sans-serif;
+  font-family: "Verdana", sans-serif;
   padding: 2px;
 }
 
@@ -267,7 +255,7 @@ body {
   background-color: rgba(230, 194, 147, 0.841);
   padding: 10px;
   margin-bottom: 20px;
-  font-family: 'Verdana', sans-serif;
+  font-family: "Verdana", sans-serif;
   border-radius: 500px; /* Valor alto para hacerlos ovalados */
 }
 /* Estilo circular para el botón */
@@ -286,7 +274,6 @@ body {
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-
 /* Cambio de color al acercarse y agrandamiento del botón */
 .form button:hover {
   background-color: #ff6600;
@@ -298,16 +285,4 @@ body {
   display: inline-block;
   margin-right: 10px; /* Espacio entre los campos */
   vertical-align: top; /* Alineación superior para mantenerlos en línea */
-}
-
-/* Estilo para hacer zoom out */
-.zoom-out {
-  transform: scale(1);
-  transition: transform 0.5s ease; /* Agrega una transición suave */
-}
-
-/* Estilo para hacer zoom in */
-.zoom-in {
-  transform: scaleX(1.15);
-  transition: transform 0.5s ease; /* Agrega una transición suave */
 }

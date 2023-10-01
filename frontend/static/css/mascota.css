@@ -1,20 +1,13 @@
 body {
-  background-image: url("/static/images/monitor.jpeg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Cambiado a 100vh para ocupar toda la altura de la ventana */
+  background-image: url("/static/images/paws.jpeg");
+  background-size: 30%;
+
+  font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0;
 }
 
 .container {
-  width: 90%;
-  max-width: 750px;
-  max-height: 750px;
+  width: 1000px;
   border: 1px solid black;
   text-align: center;
   padding: 10px;
