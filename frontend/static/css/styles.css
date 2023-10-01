@@ -6,7 +6,7 @@ html {
 }
 
 body {
-  background-image: url("/static/images/paws.png");
+  background-image: url("/static/images/paws.jpeg");
   background-size: 30%;
 
   font-family: Arial, sans-serif;
@@ -93,6 +93,16 @@ body {
 .main {
   width: 600px;
   padding: 10px;
+  background-image: url("/static/images/pawstra.png");
+  background-color: rgba(255, 255, 255, 0.5); /* Cambia el valor de la opacidad (0.5 en este ejemplo) */
+  background-size: 40%;
+}
+
+
+
+.main2 {
+  width:200px;
+  padding: 10px;
 }
 
 .main h2 {
@@ -152,4 +162,152 @@ body {
 
 .rightbar li {
   margin-bottom: 10px;
+}
+/* Agrega estos estilos al final de tu archivo CSS */
+
+/* Estilos para la sección de mascotas perdidas */
+.mascota-container {
+  text-align: center;
+  background-color: #edd371;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para el cuadro de la mascota */
+.mascota {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estilos para la imagen de la mascota */
+#imagen-mascota {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #5b86ff;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.container2{
+  width: 40%;
+  max-width: 300px;
+  max-height: 600px;
+  border: 10px solid rgb(84, 92, 119);
+  text-align: center;
+  padding: 5px;
+  background-color: rgba(236, 194, 7,0.92); /* Cambiado a un color con transparencia */
+  color: #333;
+  font-family: 'Verdana', sans-serif;
+  border-radius: 150px;
+  margin-top: 5vh; /* Agregado margen superior para centrar verticalmente */
+}
+
+/* Estilos para el botón "Siguiente" */
+#siguiente {
+  background-color: #5b86ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.2s;
+}
+
+#siguiente:hover {
+  transform: scale(1.1);
+}
+
+
+
+.logo {
+  margin-top: 15px;
+}
+
+.logo img {
+  width: 250px;
+}
+
+.form {
+  width: 600px;
+  margin: 15px auto;
+  padding: 15px;
+   /* Cambiado a un color con transparencia */
+  color: #333;
+  text-align: center;
+  font-family: 'Verdana', sans-serif;
+}
+
+.form h2 {
+  margin-top: 0;
+}
+
+.form p {
+  margin-bottom: 10px;
+}
+
+.form label {
+  display: block;
+  font-family: 'Verdana', sans-serif;
+  padding: 2px;
+}
+
+/* Estilo ovalado para los campos de entrada */
+.form input[type="text"],
+.form input[type="file"],
+.form textarea,
+.form select,
+.form input[type="password"],
+.form input[type="date"] {
+  width: 75%;
+  border: none;
+  background-color: rgba(230, 194, 147, 0.841);
+  padding: 10px;
+  margin-bottom: 20px;
+  font-family: 'Verdana', sans-serif;
+  border-radius: 500px; /* Valor alto para hacerlos ovalados */
+}
+/* Estilo circular para el botón */
+.form button {
+  width: 150px; /* Ancho deseado */
+  height: 70px; /* Altura deseada */
+  background-color: #5b86ff;
+  color: rgb(43, 15, 15);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.2s;
+  background-image: url(/static/images/items.png);
+  background-size: 100% 100%;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+
+/* Cambio de color al acercarse y agrandamiento del botón */
+.form button:hover {
+  background-color: #ff6600;
+  transform: scale(1.05);
+}
+
+/* Estilo para agrupar los campos en una sola línea */
+.form .form-group {
+  display: inline-block;
+  margin-right: 10px; /* Espacio entre los campos */
+  vertical-align: top; /* Alineación superior para mantenerlos en línea */
+}
+
+/* Estilo para hacer zoom out */
+.zoom-out {
+  transform: scale(1);
+  transition: transform 0.5s ease; /* Agrega una transición suave */
+}
+
+/* Estilo para hacer zoom in */
+.zoom-in {
+  transform: scaleX(1.15);
+  transition: transform 0.5s ease; /* Agrega una transición suave */
 }
