@@ -12,16 +12,17 @@
   <html>
     <body>
       <div class="container">
-        
         <div class="banner">
           <div class="logo">
             <!-- aqui colocaremos una imagen -->
             <img src="/static/images/ipawv2.png" />
           </div>
           <ul class="menu">
-            <li onclick="redirigirinicio()" >Inicio</li>
-            <li onclick="redirigirreserva()" >Reservar servicio</li>
-            <li onclick="redirigirregistro_m_perdidas()" >Reportar mascota perdida</li>
+            <li onclick="redirigirinicio()">Inicio</li>
+            <li onclick="redirigirreserva()">Reservar servicio</li>
+            <li onclick="redirigirregistro_m_perdidas()">
+              Reportar mascota perdida
+            </li>
             <li onclick="redirigirregistro()">¡Registrarse!</li>
             <li onclick="redirigirmascota()">Registrar mascota</li>
           </ul>
@@ -55,15 +56,34 @@
           <div class="main">
             <div class="form">
               <h2>Registro de Mascotas Perdidas</h2>
-              <p>Completa el siguiente formulario para registrar una mascota perdida.</p>
-              <form form id="regMascotasForm" action="URL_de_tu_API" method="post" enctype="multipart/form-data">
+              <p>
+                Completa el siguiente formulario para registrar una mascota
+                perdida.
+              </p>
+              <form
+                form
+                id="regMascotasForm"
+                action="URL_de_tu_API"
+                method="post"
+                enctype="multipart/form-data"
+              >
                 <div class="form-group">
                   <label for="dni_usuario">DNI del Usuario:</label>
-                  <input type="text" id="dni_usuario" name="dni_usuario" required />
+                  <input
+                    type="text"
+                    id="dni_usuario"
+                    name="dni_usuario"
+                    required
+                  />
                 </div>
                 <div class="form-group">
                   <label for="nombre_mascota">Nombre de la Mascota:</label>
-                  <input type="text" id="nombre_mascota" name="nombre_mascota" required />
+                  <input
+                    type="text"
+                    id="nombre_mascota"
+                    name="nombre_mascota"
+                    required
+                  />
                 </div>
                 <div class="form-group">
                   <label for="animal">Animal:</label>
@@ -74,18 +94,23 @@
                   <input type="text" id="raza" name="raza" required />
                 </div>
                 <div class="form-group">
-                  <label for="imagen">Imagen de la Mascota:</label>
-                  <input type="file" id="imagen" name="imagen" accept="image/*" required />
+                  <label for="image">Imagen de la Mascota:</label>
+                  <input type="file" id="image" name="image" required />
                 </div>
                 <div class="form-group">
                   <label for="descripcion">Descripción:</label>
-                  <textarea id="descripcion" name="descripcion" rows="4" cols="50" required></textarea>
+                  <textarea
+                    id="descripcion"
+                    name="descripcion"
+                    rows="4"
+                    cols="50"
+                    required
+                  ></textarea>
                 </div>
               </form>
               <button id="btnSendMascotas" type="button">Enviar</button>
               <div id="mensajeMascotas"></div>
             </div>
-            
           </div>
           <div class="rightbar">
             <h3>Más información</h3>
@@ -137,8 +162,6 @@
           <p>© 2000 iPaw. Todos los derechos reservados.</p>
         </div>
       </div>
-      
-    </script>
     </body>
   </html>
 </html>

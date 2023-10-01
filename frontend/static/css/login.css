@@ -52,6 +52,15 @@ body {
   border-radius: 5px;
   background-color: #ff9900; /* Color naranja para el botón */
 }
+
+.form input:invalid {
+  border-color: red;
+}
+
+.form input:valid {
+  border-color: green;
+}
+
 .logo img {
   width: 250px;
 }

@@ -8,20 +8,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const nombreMascota = document.getElementById("nombre_mascota").value;
     const animal = document.getElementById("animal").value;
     const raza = document.getElementById("raza").value;
-    const imagen = document.getElementById("imagen").files[0];
+    const image = document.getElementById("image").files[0];
     const descripcion = document.getElementById("descripcion").value;
 
     // Crear un objeto FormData para enviar datos y archivos
     const formData = new FormData();
     formData.append("dni_usuario", dniUsuario);
-    formData.append("nombre_mascota", nombreMascota);
+    formData.append("nombre", nombreMascota);
     formData.append("animal", animal);
     formData.append("raza", raza);
-    formData.append("imagen", imagen);
+    formData.append("image", image);
+    formData.append("estado", "perdido");
     formData.append("descripcion", descripcion);
 
     // Enviar los datos a tu API utilizando fetch
-    fetch("URL_de_tu_API", {
+    fetch("http://127.0.0.1:5003/mascotas_perdidas", {
       method: "POST",
       body: formData,
     })
@@ -29,14 +30,13 @@ document.addEventListener("DOMContentLoaded", function () {
         // Limpiar el formulario
         formulario.reset();
         // Redirigir al usuario a index.html después de enviar los datos
-        window.location.href = "/";
+        // window.location.href = "/";
       })
       .catch((error) => {
         console.error("Error al enviar los datos a la API:", error);
       });
   });
 });
-
 
 function redirigirregistro_m_perdidas() {
   window.location.href = "/registro_m_perdidas";

@@ -170,35 +170,6 @@
           <p>© 2000 iPaw. Todos los derechos reservados.</p>
         </div>
       </div>
-      <script>
-        const mascotasPerdidas = [];
-
-        let indiceMascotaActual = 0;
-
-        function mostrarMascota() {
-          const mascotaActual = mascotasPerdidas[indiceMascotaActual];
-          document.getElementById("imagen-mascota").src = mascotaActual.image;
-          document.getElementById("nombre").textContent = mascotaActual.nombre;
-          document.getElementById("descripcion").textContent =
-            mascotaActual.descripcion;
-          document.getElementById("usuario").textContent =
-            mascotaActual.dni_usuario;
-        }
-
-        function avanzarMascota() {
-          indiceMascotaActual++;
-          if (indiceMascotaActual >= mascotasPerdidas.length) {
-            indiceMascotaActual = 0; // Vuelve al principio si llegamos al final
-          }
-          mostrarMascota();
-        }
-
-        mostrarMascota(); // Mostrar la primera mascota al cargar la página
-
-        document
-          .getElementById("siguiente")
-          .addEventListener("click", avanzarMascota);
-      </script>
     </body>
   </html>
 </html>

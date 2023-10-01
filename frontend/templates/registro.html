@@ -12,16 +12,17 @@
   <html>
     <body>
       <div class="container">
-        
         <div class="banner">
           <div class="logo">
             <!-- aqui colocaremos una imagen -->
             <img src="/static/images/ipawv2.png" />
           </div>
           <ul class="menu">
-            <li onclick="redirigirinicio()" >Inicio</li>
-            <li onclick="redirigirreserva()" >Reservar servicio</li>
-            <li onclick="redirigirregistro_m_perdidas()" >Reportar mascota perdida</li>
+            <li onclick="redirigirinicio()">Inicio</li>
+            <li onclick="redirigirreserva()">Reservar servicio</li>
+            <li onclick="redirigirregistro_m_perdidas()">
+              Reportar mascota perdida
+            </li>
             <li onclick="redirigirregistro()">¡Registrarse!</li>
             <li onclick="redirigirmascota()">Registrar mascota</li>
           </ul>
@@ -55,7 +56,9 @@
           <div class="main">
             <div class="form">
               <h2>Registrarse</h2>
-              <p>Completa el siguiente formulario para crear tu cuenta en iPaw.</p>
+              <p>
+                Completa el siguiente formulario para crear tu cuenta en iPaw.
+              </p>
               <form id="regForm" action="#" method="post">
                 <div class="form-group">
                   <label for="nombre">Nombre:</label>
@@ -67,11 +70,27 @@
                 </div>
                 <div class="form-group">
                   <label for="contrasenia">Contraseña:</label>
-                  <input type="password" id="contrasenia" name="contrasenia" required />
+                  <!-- Agregamos los atributos minlength y pattern para la contraseña -->
+                  <input
+                    type="password"
+                    id="contrasenia"
+                    name="contrasenia"
+                    minlength="8"
+                    pattern="[A-Za-z0-9!@#$%^&*()_+-=]*"
+                    required
+                  />
                 </div>
                 <div class="form-group">
                   <label for="dni">DNI:</label>
-                  <input type="text" id="dni" name="dni" required />
+                  <!-- Agregamos los atributos minlength, maxlength, pattern y type para el DNI -->
+                  <input
+                    type="text"
+                    id="dni"
+                    name="dni"
+                    minlength="8"
+                    maxlength="8"
+                    required
+                  />
                 </div>
                 <div class="form-group">
                   <label for="direccion">Dirección:</label>
@@ -81,7 +100,6 @@
               <button id="btnSend" type="button" form="regForm">Enviar</button>
               <div id="mensaje"></div>
             </div>
-            
           </div>
           <div class="rightbar">
             <h3>Más información</h3>
@@ -133,10 +151,6 @@
           <p>© 2000 iPaw. Todos los derechos reservados.</p>
         </div>
       </div>
-      
-    </script>
     </body>
   </html>
 </html>
-
-    
