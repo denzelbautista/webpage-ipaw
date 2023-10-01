@@ -1,3 +1,12 @@
+// vamos a hacer que funcione el registro de usuarios
+// 1. capturar el evento submit del formulario
+// 2. prevenir el comportamiento por defecto
+// 3. capturar los datos del formulario
+// 4. validar los datos del formulario
+// 5. enviar los datos al backend
+// 6. recibir la respuesta del backend
+// 7. mostrar el mensaje de error o de éxito
+
 // Agregar un evento de DOMContentLoaded al objeto document
 document.addEventListener("DOMContentLoaded", function () {
   // Obtener el elemento form por su id
@@ -28,19 +37,35 @@ document.addEventListener("DOMContentLoaded", function () {
       return value;
     }
 
-    // Enviar el objeto JSON a la ruta del backend con fetch
-    fetch("http://127.0.0.1:5001/usuarios", {
-      method: "POST", // Especificar el método
-      headers: {
-        "Content-Type": "application/json", // Especificar el tipo de contenido
-      },
-      body: JSON.stringify(formJSON, replacer), // Convertir el objeto JSON a una cadena usando la función replacer y usarla como el cuerpo de la solicitud
+    // Enviar los datos a tu API utilizando fetch
+    fetch("URL_de_tu_API", {
+      method: "POST",
+      body: formData,
     })
-      .then((response) => response.text()) // Obtener la respuesta como texto
-      .then((data) => {
-        console.log(data); // Mostrar los datos en la consola (opcional)
-        window.location.href = "/"; // Redirigir al index.html
+      .then(() => {
+        // Limpiar el formulario
+        formulario.reset();
+      
+        window.location.href = "/";
       })
-      .catch((error) => console.error(error)); // Manejar los posibles errores
+      .catch((error) => {
+        console.error("Error al enviar los datos a la API:", error);
+      });
   });
 });
+
+
+function redirigirregistro_m_perdidas() {
+  window.location.href = "/registro_m_perdidas";
+}
+
+function redirigirregistro() {
+  window.location.href = "/registro";
+}
+
+function redirigirmascota() {
+  window.location.href = "/registro_m";
+}
+function redirigirreserva() {
+  window.location.href = "/reserva";
+}
