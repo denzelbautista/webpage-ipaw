@@ -1,21 +1,19 @@
 import uuid
-from flask import Flask, jsonify,  request
+from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-app = Flask(__name__)
 
-CORS(app, origins='http://127.0.0.1:5000')
+app = Flask(__name__)
+CORS(app, origins='*')
 
 # Configura la conexión a la base de datos
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:utec@localhost:3306/ipaw'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://admin:oDSEzjdaim3MSgGjYbm1@database-1.cwsnkubwbttj.us-east-1.rds.amazonaws.com:3306/ipaw'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Crea una instancia de SQLAlchemy
 db = SQLAlchemy(app)
 
-# modelos
-
-
+# Modelos
 class Usuario(db.Model):
     __tablename__ = 'usuario'
     dni = db.Column(db.BigInteger, primary_key=True)
@@ -35,7 +33,6 @@ class Usuario(db.Model):
             "contrasenia": self.contrasenia,
             "direccion": self.direccion
         }
-
 
 class Mascota(db.Model):
     __tablename__ = 'mascota'
@@ -58,7 +55,6 @@ class Mascota(db.Model):
             "animal": self.animal,
             "raza": self.raza
         }
-
 
 class Reserva(db.Model):
     __tablename__ = 'reserva'
@@ -85,43 +81,49 @@ class Reserva(db.Model):
             "f_fin": self.f_fin
         }
 
-
 @app.route('/reservas', methods=["GET", "POST"])
-def reservas():
+def get_post_reservas():
     if request.method == 'GET':
         data = Reserva.query.all()
         serialized = [reserva.serialize() for reserva in data]
         return jsonify({'success': True, 'data': serialized})
 
     data = request.get_json()
-    nueva = Reserva(dni_usuario=data['dni_usuario'], id_mascota=data['id_mascota'],
-                    servicio=data['servicio'], f_inicio=data['f_inicio'], f_fin=data['f_fin'])
+    nueva = Reserva(
+        dni_usuario=data['dni_usuario'],
+        id_mascota=data['id_mascota'],
+        servicio=data['servicio'],
+        f_inicio=data['f_inicio'],
+        f_fin=data['f_fin']
+    )
     db.session.add(nueva)
     db.session.commit()
 
-    return 'RESERVA CREADA CON EXITO'
-
+    return jsonify({'success': True, 'message': 'Reserva creada con éxito', 'data': nueva.serialize()}), 201
 
 @app.route('/reservas/<id>', methods=["GET", "PUT", "DELETE"])
-def reservas_id(id):
+def get_put_delete_reservas(id):
     data = Reserva.query.get_or_404(id)
     json = request.get_json()
+    
     if request.method == 'GET':
-        return jsonify(data.serialize())
+        return jsonify({'success': True, 'data': data.serialize()})
 
     if request.method == "DELETE":
         db.session.delete(data)
         db.session.commit()
+        return jsonify({'success': True, 'message': 'Reserva eliminada'}), 204
 
     if request.method == "PUT":
-        data.dni_usuario = json['dni']
-        data.id_mascota = json['mascota']
+        data.dni_usuario = json['dni_usuario']
+        data.id_mascota = json['id_mascota']
         data.servicio = json['servicio']
         data.f_inicio = json['f_inicio']
         data.f_fin = json['f_fin']
+        db.session.commit()
+        return jsonify({'success': True, 'message': 'Reserva actualizada', 'data': data.serialize()}), 200
 
     return 'SUCCESS'
 
-
 if __name__ == '__main__':
-    app.run(port=5003)
+    app.run(host='0.0.0.0',port=5004)
