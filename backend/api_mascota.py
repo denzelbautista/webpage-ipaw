@@ -69,6 +69,16 @@ def get_post_mascotas():
         db.session.commit()
         return jsonify({'success': True, 'message': 'Mascota creada', 'data': nueva_mascota.serialize()}), 201
 
+
+@app.route('/mascotas/usuario/<dni>', methods=["GET"])
+def get_mascotas_por_usuario(dni):
+    mascotas = Mascota.query.filter_by(dni_usuario=dni).all()
+    if mascotas:
+        mascotas_serialize = [mascota.serialize() for mascota in mascotas]
+        return jsonify({'success': True, 'data': mascotas_serialize})
+    else:
+        return jsonify({'success': False, 'message': 'No se encontraron mascotas para este usuario'}), 404
+        
 @app.route('/mascotas/<id>', methods=['GET', 'PUT', 'DELETE'])
 def get_put_delete_mascotas(id):
     mascota = Mascota.query.get_or_404(id)
