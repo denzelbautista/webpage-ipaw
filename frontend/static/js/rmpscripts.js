@@ -1,43 +1,38 @@
-// Agregar un evento de DOMContentLoaded al objeto document
 document.addEventListener("DOMContentLoaded", function () {
-  // Obtener el elemento form por su id
-  var form = document.getElementById("regMascotasForm");
+  const formulario = document.getElementById("regMascotasForm");
+  const btnEnviar = document.getElementById("btnSendMascotas");
 
-  // Obtener el botón de enviar por su id
-  var btn = document.getElementById("btnSendMascotas");
+  btnEnviar.addEventListener("click", function () {
+    // Obtener los datos del formulario
+    const dniUsuario = document.getElementById("dni_usuario").value;
+    const nombreMascota = document.getElementById("nombre_mascota").value;
+    const animal = document.getElementById("animal").value;
+    const raza = document.getElementById("raza").value;
+    const imagen = document.getElementById("imagen").files[0];
+    const descripcion = document.getElementById("descripcion").value;
 
-  // Agregar un evento de click al botón
-  btn.addEventListener("click", function (e) {
-    // Prevenir el comportamiento por defecto del botón (enviar el formulario)
-    e.preventDefault();
+    // Crear un objeto FormData para enviar datos y archivos
+    const formData = new FormData();
+    formData.append("dni_usuario", dniUsuario);
+    formData.append("nombre_mascota", nombreMascota);
+    formData.append("animal", animal);
+    formData.append("raza", raza);
+    formData.append("imagen", imagen);
+    formData.append("descripcion", descripcion);
 
-    // Crear un objeto FormData con los datos del formulario
-    var formData = new FormData(form);
-
-    // Convertir el objeto FormData a un objeto JSON
-    var formJSON = Object.fromEntries(formData.entries());
-
-    // Mostrar el objeto JSON en la consola (opcional)
-    console.log(formJSON);
-
-    // Crear una función que reemplace los valores no válidos por null
-    function replacer(key, value) {
-      if (value === undefined || value === NaN || typeof value === "function") {
-        return null;
-      }
-      return value;
-    }
-
-    // Enviar el objeto JSON a la ruta del backend con fetch
-    fetch("http://54.204.64.54:5003/mascotas_perdidas", {
-      method: "POST", // Especificar el método POST
-      headers: {
-        "Content-Type": "application/json", // Especificar el tipo de contenido
-      },
-      body: JSON.stringify(formJSON, replacer), // Convertir el objeto JSON a una cadena usando la función replacer y usarla como el cuerpo de la solicitud
+    // Enviar los datos a tu API utilizando fetch
+    fetch("URL_de_tu_API", {
+      method: "POST",
+      body: formData,
     })
-      .then((response) => response.text()) // Obtener la respuesta como texto
-      .then((data) => console.log(data)) // Mostrar los datos en la consola (opcional)
-      .catch((error) => console.error(error)); // Manejar los posibles errores
+      .then(() => {
+        // Limpiar el formulario
+        formulario.reset();
+        // Redirigir al usuario a index.html después de enviar los datos
+        window.location.href = "/";
+      })
+      .catch((error) => {
+        console.error("Error al enviar los datos a la API:", error);
+      });
   });
 });
