@@ -20,13 +20,16 @@ def login ():
 def registro ():
   return render_template ('registro.html')
 
-@app.route('/registro_mascota', methods = ['GET'])
-def registro_mascota():
-   return render_template('mascota.html')
+@app.route ('/reserva', methods=['GET'])
+def reserva ():
+  return render_template ('reserva.html')
 
-@app.route('/reservar')
-def reserva():
-   return render_template('reserva.html')
+
+@app.route ('/registro_m_perdidas', methods=['GET'])
+def regmp ():
+  return render_template ('registro_m_perdidas.html')
+
+
 
 # Run the app
 if __name__ == '__main__':
