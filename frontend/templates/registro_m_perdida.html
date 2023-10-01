@@ -1,55 +1,144 @@
-<!-- Este es el archivo registro_mascotas_perdidas.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="/static/images/ipaw.ico" />
-
-    <!-- Importamos los estilos y funciones JS -->
-    <link rel="stylesheet" href="/static/css/registro.css" />
-    <script src="/static/js/regscripts.js"></script>
-    <title>Registro de Mascotas Perdidas</title>
+    <!-- importamos los estilos y funciones js-->
+    <link rel="stylesheet" href="/static/css/styles.css" />
     <script src="static/js/rmpscripts.js"></script>
+    <title>iPaw.net</title>
   </head>
-  <body>
-    <div class="container">
-      <div class="logo">
-        <!-- Aquí colocaremos una imagen -->
-        <img src="/static/images/ipawv2.png" />
+  <html>
+    <body class = "zoom-in">
+      <div class="container">
+        
+        <div class="banner">
+          <div class="logo">
+            <!-- aqui colocaremos una imagen -->
+            <img src="/static/images/ipawv2.png" />
+          </div>
+          <ul class="menu">
+            <li>Inicio</li>
+            <li>Categorías</li>
+            <li onclick="redirigirregistro_m_perdidas()" >Reportar mascota perdida</li>
+            <li onclick="redirigirregistro()">¡Registrarse!</li>
+            <li onclick="redirigirlogin()">¡Inicia sesión!</li>
+          </ul>
+        </div>
+        <div class="content">
+          <div class="sidebar">
+            <h3>Bienvenido a iPaw</h3>
+            <p>
+              iPaw es la página web donde puedes comprar y vender todo lo
+              relacionado con las mascotas. Aquí encontrarás desde alimentos y
+              accesorios hasta servicios de veterinaria y adopción. ¡Únete a
+              nuestra comunidad de amantes de los animales!
+            </p>
+            <img src="/static/images/perrito.png" alt="Perro" width="100%" />
+            <h3>Categorías</h3>
+            <ul>
+              <li><a href="#">Perros</a></li>
+              <li><a href="#">Gatos</a></li>
+              <li><a href="#">Aves</a></li>
+              <li><a href="#">Reptiles</a></li>
+              <li><a href="#">Roedores</a></li>
+              <li><a href="#">Peces</a></li>
+              <li><a href="#">Otros</a></li>
+            </ul>
+            <img
+              src="/static/images/animalitos.jpeg"
+              alt="animls"
+              width="100%"
+            />
+          </div>
+          <div class="main">
+            <div class="form">
+              <h2>Registro de Mascotas Perdidas</h2>
+              <p>Completa el siguiente formulario para registrar una mascota perdida.</p>
+              <form form id="regMascotasForm" action="URL_de_tu_API" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                  <label for="dni_usuario">DNI del Usuario:</label>
+                  <input type="text" id="dni_usuario" name="dni_usuario" required />
+                </div>
+                <div class="form-group">
+                  <label for="nombre_mascota">Nombre de la Mascota:</label>
+                  <input type="text" id="nombre_mascota" name="nombre_mascota" required />
+                </div>
+                <div class="form-group">
+                  <label for="animal">Animal:</label>
+                  <input type="text" id="animal" name="animal" required />
+                </div>
+                <div class="form-group">
+                  <label for="raza">Raza:</label>
+                  <input type="text" id="raza" name="raza" required />
+                </div>
+                <div class="form-group">
+                  <label for="imagen">Imagen de la Mascota:</label>
+                  <input type="file" id="imagen" name="imagen" accept="image/*" required />
+                </div>
+                <div class="form-group">
+                  <label for="descripcion">Descripción:</label>
+                  <textarea id="descripcion" name="descripcion" rows="4" cols="50" required></textarea>
+                </div>
+              </form>
+              <button id="btnSendMascotas" type="button">Enviar</button>
+              <div id="mensajeMascotas"></div>
+            </div>
+            
+          </div>
+          <div class="rightbar">
+            <h3>Más información</h3>
+            <ul>
+              <li><a href="#">Sobre nosotros</a></li>
+              <li><a href="#">Política de privacidad</a></li>
+              <li><a href="#">Términos y condiciones</a></li>
+              <li><a href="#">Contacto</a></li>
+            </ul>
+            <h3>Anuncios</h3>
+            <ul>
+              <li><a href="#">Promoción especial para nuevos usuarios</a></li>
+              <li><a href="#">Descubre las mejores ofertas de iPaw</a></li>
+              <li><a href="#">Participa en nuestro sorteo mensual</a></li>
+              <li><a href="#">Síguenos en nuestras redes sociales</a></li>
+            </ul>
+            <h3>Novedades</h3>
+            <ul>
+              <li><a href="#">iPaw lanza su nueva app móvil</a></li>
+              <li>
+                <a href="#">iPaw se asocia con la fundación Adopta un Amigo</a>
+              </li>
+              <li><a href="#">iPaw celebra su primer aniversario</a></li>
+              <li>
+                <a href="#"
+                  >iPaw recibe el premio a la mejor página web de mascotas</a
+                >
+              </li>
+            </ul>
+            <h3>Nuestros sponsors:</h3>
+            <img
+              src="/static/images/sponsor1.gif"
+              alt="Sponsor 1"
+              width="100%"
+            />
+            <img
+              src="/static/images/sponsor2.gif"
+              alt="Sponsor 2"
+              width="100%"
+            />
+            <img
+              src="/static/images/sponsor3.gif"
+              alt="Sponsor 3"
+              width="100%"
+            />
+          </div>
+        </div>
+        <div class="footer">
+          <p>© 2000 iPaw. Todos los derechos reservados.</p>
+        </div>
       </div>
-      <div class="form">
-        <h2>Registro de Mascotas Perdidas</h2>
-        <p>Completa el siguiente formulario para registrar una mascota perdida.</p>
-        <form id="regMascotasForm" action="#" method="post">
-          <div class="form-group">
-            <label for="dni_usuario">DNI del Usuario:</label>
-            <input type="text" id="dni_usuario" name="dni_usuario" required />
-          </div>
-          <div class="form-group">
-            <label for="nombre_mascota">Nombre de la Mascota:</label>
-            <input type="text" id="nombre_mascota" name="nombre_mascota" required />
-          </div>
-          <div class="form-group">
-            <label for="animal">Animal:</label>
-            <input type="text" id="animal" name="animal" required />
-          </div>
-          <div class="form-group">
-            <label for="raza">Raza:</label>
-            <input type="text" id="raza" name="raza" required />
-          </div>
-          <div class="form-group">
-            <label for="imagen">Imagen de la Mascota:</label>
-            <input type="file" id="imagen" name="imagen" accept="image/*" required />
-          </div>
-          <div class="form-group">
-            <label for="descripcion">Descripción:</label>
-            <textarea id="descripcion" name="descripcion" rows="4" cols="50" required></textarea>
-          </div>
-        </form>
-        <button id="btnSendMascotas" type="button" form="regMascotasForm">Enviar</button>
-        <div id="mensajeMascotas"></div>
-      </div>
-    </div>
-  </body>
+      
+    </script>
+    </body>
+  </html>
 </html>
