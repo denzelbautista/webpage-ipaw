@@ -52,3 +52,6 @@ function redirigirmascota() {
 function redirigirreserva() {
   window.location.href = "/reserva";
 }
+function redirigirinicio() {
+  window.location.href = "/";
+}
