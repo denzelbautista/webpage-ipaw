@@ -162,7 +162,7 @@ body {
 
 /* Del elemento central del content fin */
 
-/* De la sección de mascotas perdidas inicio */
+/* Estilos para la sección de mascotas perdidas inicio */
 
 .mascota-container {
   text-align: center;
@@ -174,7 +174,23 @@ body {
 }
 
 .mascota {
+  display: flex;
   align-items: center;
+}
+
+.mascota-imagen {
+  flex: 1;
+}
+
+.separador {
+  border-left: 2px solid black;
+  height: 100%;
+  margin: 0 20px;
+}
+
+.mascota-datos {
+  flex: 2;
+  text-align: left;
 }
 
 #imagen-mascota {
@@ -200,7 +216,16 @@ body {
   transform: scale(1.1);
 }
 
-/* De la sección de mascotas perdidas fin */
+.telefono {
+  background-color: #5b86ff;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+/* Estilos para la sección de mascotas perdidas fin */
 
 /* De los forms inicio */
 
