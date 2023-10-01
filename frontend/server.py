@@ -25,7 +25,7 @@ def reserva ():
 
 @app.route ('/registro_m_perdidas', methods=['GET'])
 def regmp ():
-  return render_template ('registro_m_perdidas.html')
+  return render_template ('registro_m_perdida.html')
 
 @app.route ('/registro_m', methods=['GET'])
 def regm():
