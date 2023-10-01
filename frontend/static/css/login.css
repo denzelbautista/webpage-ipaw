@@ -1,19 +1,29 @@
+html {
+  background: #f0f0f0; /* color de fondo */
+  box-shadow: inset 0 0 20px black; /* sombra interna con color negro y radio de 20px */
+  z-index: 9999; /* orden de apilamiento alto */
+  filter: blur(0.7px);
+}
+
 /* Estilos css para la página web */
 body {
+  background-image: url("/static/images/paws.png");
+  background-size: 30%;
+  height: 100vh;
+  display: flex;
   font-family: Arial, sans-serif;
-  background-color: rgb(250, 219, 135);
   margin: 0;
 }
 
 .container {
+  background-color: #dba50e;
   width: 1000px; /* Ancho fijo para simular un monitor antiguo */
-  height: 650px; /* Alto fijo para simular un monitor antiguo */
-  background-color: white;
-  margin: 0 auto;
+  margin: auto;
   border: 1px solid black;
 }
 
 .form {
+  background-color: #5b86ff;
   width: 400px; /* Ancho fijo para el formulario */
   margin: 20px auto; /* Centrar el formulario */
   border: 1px solid black; /* Borde negro para el formulario */
@@ -25,12 +35,8 @@ body {
   text-align: center; /* Centrar el título */
 }
 
-.form p {
-  margin-bottom: 10px;
-}
-
 .form label {
-  display: block; /* Mostrar cada etiqueta en una línea */
+  display: flex; /* Mostrar cada etiqueta en una línea */
 }
 
 .form input {
@@ -39,8 +45,11 @@ body {
 }
 
 .form button {
-  width: 100%; /* Ocupar todo el ancho del formulario */
+  width: 50%; /* Ocupar todo el ancho del formulario */
+  height: 30px;
+  text-align: center;
   border: none; /* Sin borde para el botón */
+  border-radius: 5px;
   background-color: #ff9900; /* Color naranja para el botón */
 }
 .logo img {
@@ -49,4 +58,24 @@ body {
 .logo {
   margin-top: 15px;
   text-align: center;
+}
+#boton {
+  text-align: center;
+  margin: 10px;
+}
+
+#dnif {
+  margin: 10px;
+}
+
+#contraf {
+  margin: 10px;
+}
+
+.footer {
+  height: 50px;
+  background-color: #aaaaaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
