@@ -20,23 +20,28 @@
         <h2>Iniciar sesión</h2>
         <p>Ingresa tu DNI y contraseña para acceder a tu cuenta en iPaw.</p>
         <form action="#" method="post" id="loginForm">
-          <p><label for="dni">DNI:</label></p>
-          <p><input type="text" id="dni" name="dni" required /></p>
-          <p><label for="contrasenia">Contraseña:</label></p>
-          <p>
+          <div id="dnif">
+            <label for="dni">DNI:</label>
+            <input type="text" id="dni" name="dni" required />
+          </div>
+          <div id="contraf">
+            <label for="contrasenia">Contraseña:</label>
+
             <input
               type="password"
               id="contrasenia"
               name="contrasenia"
               required
             />
-          </p>
-          <p><button type="submit" id="send">Iniciar sesión</button></p>
+          </div>
+          <div id="boton">
+            <button type="submit" id="send">Iniciar sesión</button>
+          </div>
         </form>
       </div>
 
       <div class="footer">
-        <p>© 2023 iPaw. Todos los derechos reservados.</p>
+        <p>© 2000 iPaw. Todos los derechos reservados.</p>
       </div>
     </div>
   </body>
