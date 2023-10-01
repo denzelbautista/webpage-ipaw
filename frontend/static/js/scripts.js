@@ -32,32 +32,41 @@ function mostrarMascota() {
 }
 
 function avanzarMascota() {
+  console.log("Clic en 'Siguiente'");
   indiceMascotaActual++;
+  console.log("Índice actual: " + indiceMascotaActual);
+
   if (indiceMascotaActual >= mascotasPerdidas.length) {
     indiceMascotaActual = 0; // Vuelve al principio si llegamos al final
+    console.log("Reiniciando a 0");
   }
+
+  console.log("Nuevo índice: " + indiceMascotaActual);
+
   mostrarMascota();
 }
 
-fetch("http://127.0.0.1:5003/mascotas_perdidas")
-  .then((respuesta) => respuesta.json())
-  .then((datos) => {
-    // Verifica que datos.data contenga el arreglo de mascotas
+async function obtenerMascotas() {
+  try {
+    const respuesta = await fetch("http://127.0.0.1:5003/mascotas_perdidas");
+    const datos = await respuesta.json();
+
     if (datos.success && datos.data && Array.isArray(datos.data)) {
-      // Asigna el arreglo de mascotas a mascotasPerdidas
       mascotasPerdidas = datos.data;
-
-      // Mostramos la primera mascota
+      console.log(mascotasPerdidas);
       mostrarMascota();
-
-      // Añadimos el evento click al botón "siguiente"
-      document
-        .getElementById("siguiente")
-        .addEventListener("click", avanzarMascota);
     } else {
       console.error("Datos no válidos o faltantes en la respuesta.");
     }
-  })
-  .catch((error) => {
+  } catch (error) {
     console.error(error);
-  });
+  }
+}
+
+// Llama a obtenerMascotas al cargar la página
+obtenerMascotas().then(() => {
+  // Añade el evento click al botón "siguiente" después de cargar los datos
+  document
+    .getElementById("siguiente")
+    .addEventListener("click", avanzarMascota);
+});
