@@ -1,12 +1,3 @@
-// vamos a hacer que funcione el registro de usuarios
-// 1. capturar el evento submit del formulario
-// 2. prevenir el comportamiento por defecto
-// 3. capturar los datos del formulario
-// 4. validar los datos del formulario
-// 5. enviar los datos al backend
-// 6. recibir la respuesta del backend
-// 7. mostrar el mensaje de error o de éxito
-
 // Agregar un evento de DOMContentLoaded al objeto document
 document.addEventListener("DOMContentLoaded", function () {
   // Obtener el elemento form por su id
@@ -20,40 +11,37 @@ document.addEventListener("DOMContentLoaded", function () {
     // Prevenir el comportamiento por defecto del botón (enviar el formulario)
     e.preventDefault();
 
-    // Crear un objeto FormData con los datos del formulario
-    var formData = new FormData(form);
-
-    // Convertir el objeto FormData a un objeto JSON
-    var formJSON = Object.fromEntries(formData.entries());
+    // Crear un objeto JSON con los datos del formulario
+    let data = {
+      nombre: document.getElementById("nombre").value,
+      apellido: document.getElementById("apellido").value,
+      contrasenia: document.getElementById("contrasenia").value,
+      dni: document.getElementById("dni").value,
+      direccion: document.getElementById("direccion").value,
+    };
 
     // Mostrar el objeto JSON en la consola (opcional)
-    console.log(formJSON);
-
-    // Crear una función que reemplace los valores no válidos por null
-    function replacer(key, value) {
-      if (value === undefined || value === NaN || typeof value === "function") {
-        return null;
-      }
-      return value;
-    }
+    console.log(data);
 
     // Enviar los datos a tu API utilizando fetch
-    fetch("URL_de_tu_API", {
+    fetch("http://127.0.0.1:5001/usuarios", {
       method: "POST",
-      body: formData,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
     })
       .then(() => {
         // Limpiar el formulario
-        formulario.reset();
-      
-        window.location.href = "/";
+        form.reset();
+
+        //window.location.href = "/";
       })
       .catch((error) => {
         console.error("Error al enviar los datos a la API:", error);
       });
   });
 });
-
 
 function redirigirregistro_m_perdidas() {
   window.location.href = "/registro_m_perdidas";
