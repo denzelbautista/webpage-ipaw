@@ -10,7 +10,7 @@
     <title>iPaw.net</title>
   </head>
   <html>
-    <body>
+    <body class="zoom-out">
       <div class="container">
         
         <div class="banner">
@@ -19,11 +19,10 @@
             <img src="/static/images/ipawv2.png" />
           </div>
           <ul class="menu">
-            <li>Inicio</li>
-            <li>Categorías</li>
-            <li onclick="redirigirregistro_m_perdidas()">Reportar mascota perdida</li>
+            <li onclick="redirigirreserva()" >Reservar servicio</li>
+            <li onclick="redirigirregistro_m_perdidas()" >Reportar mascota perdida</li>
             <li onclick="redirigirregistro()">¡Registrarse!</li>
-            <li onclick="redirigirlogin()">¡Inicia sesión!</li>
+            <li onclick="redirigirmascota()">Registrar mascota</li>
           </ul>
         </div>
         <div class="content">
@@ -73,7 +72,7 @@
               detalles.
             </p>
             <div class="item">
-              <img src="dog.jpg" alt="Perro" />
+              <img src="/static/images/collar.webp" alt="Perro" />
               <!-- Puedes cambiar el nombre y la ruta de la imagen -->
               <div class="item-info">
                 <h3>Collar personalizado para perro</h3>
@@ -87,7 +86,7 @@
               </div>
             </div>
             <div class="item">
-              <img src="cat.jpg" alt="Gato" />
+              <img src="/static/images/rasc.jpeg" alt="Gato" />
               <!-- Puedes cambiar el nombre y la ruta de la imagen -->
               <div class="item-info">
                 <h3>Rascador para gato</h3>
@@ -101,7 +100,7 @@
               </div>
             </div>
             <div class="item">
-              <img src="bird.jpg" alt="Pájaro" />
+              <img src="/static/images/jau.jpeg" alt="Pájaro" />
               <!-- Puedes cambiar el nombre y la ruta de la imagen -->
               <div class="item-info">
                 <h3>Jaula para pájaro</h3>
