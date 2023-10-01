@@ -19,7 +19,7 @@ function redirigirinicio() {
 
 // para las mascotas
 
-const mascotasPerdidas = [];
+let mascotasPerdidas = [];
 let indiceMascotaActual = 0;
 
 function mostrarMascota() {
@@ -40,20 +40,24 @@ function avanzarMascota() {
 }
 
 fetch("http://127.0.0.1:5003/mascotas_perdidas")
-  .then((respuesta) => respuesta.json()) // Convertimos el JSON en un objeto
+  .then((respuesta) => respuesta.json())
   .then((datos) => {
-    // Asignamos el objeto al arreglo de mascotasPerdidas
-    mascotasPerdidas = datos;
+    // Verifica que datos.data contenga el arreglo de mascotas
+    if (datos.success && datos.data && Array.isArray(datos.data)) {
+      // Asigna el arreglo de mascotas a mascotasPerdidas
+      mascotasPerdidas = datos.data;
 
-    // Mostramos la primera mascota
-    mostrarMascota();
+      // Mostramos la primera mascota
+      mostrarMascota();
 
-    // Añadimos el evento click al botón "siguiente"
-    document
-      .getElementById("siguiente")
-      .addEventListener("click", avanzarMascota);
+      // Añadimos el evento click al botón "siguiente"
+      document
+        .getElementById("siguiente")
+        .addEventListener("click", avanzarMascota);
+    } else {
+      console.error("Datos no válidos o faltantes en la respuesta.");
+    }
   })
   .catch((error) => {
-    // Manejamos el error
     console.error(error);
   });
