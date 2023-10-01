@@ -1,7 +1,4 @@
 html {
-  background: #f0f0f0; /* color de fondo */
-  box-shadow: inset 0 0 20px black; /* sombra interna con color negro y radio de 20px */
-  z-index: 9999; /* orden de apilamiento alto */
   filter: blur(0.7px);
 }
 
@@ -9,7 +6,7 @@ body {
   background-image: url("/static/images/paws.jpeg");
   background-size: 30%;
 
-  font-family: Arial, sans-serif;
+  font-family: "Comic Sans MS", cursive, sans-serif; /* Fuente vintage */
   margin: 0;
 }
 
@@ -17,6 +14,12 @@ body {
   background-color: white;
   width: 1000px; /* Ancho fijo para simular un monitor antiguo */
   margin: 0 auto;
+}
+
+/* Del banner inicio */
+
+.logo img {
+  width: 220px;
 }
 
 .banner {
@@ -28,6 +31,7 @@ body {
   padding-left: 10px;
   padding-right: 10px;
 }
+
 .menu li {
   width: 142px;
   text-align: center;
@@ -35,13 +39,8 @@ body {
   justify-content: space-between;
 }
 
-.logo img {
-  width: 200px;
-}
-
 .menu {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: large;
+  font-family: "Comic Sans MS", cursive, sans-serif; /* Fuente vintage */
   color: blue;
   text-decoration: underline;
   cursor: pointer;
@@ -54,38 +53,19 @@ body {
 .menu li {
   margin: 5px;
   height: 45px;
-  background-color: #5b86ff;
-  color: rgb(43, 15, 15);
-  border: none;
-  transition: all 0.2s;
   background-image: url(/static/images/items.png);
   background-size: 100% 100%;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-.menu li1 {
-  margin: 7px;
-  height: 45px;
-  font-size: large;
-  background-color: #5b86ff;
-  color: rgb(43, 15, 15);
-  border: none;
-  text-align: center; 
-  transition: all 0.2s;
-  background-image: url(/static/images/items.png);
-  background-size: 100% 100%;
-  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .menu a {
-  /* aqui se colocaran los estilos de los elementos de la barra superior*/
   display: block;
   line-height: 40px; /* Esta línea centra el texto verticalmente */
   text-align: center; /* Esta línea centra el texto horizontalmente */
 }
 
-.content {
-  display: flex;
-}
+/* Del banner fin */
+
+/* De los sidebars inicio */
 
 .sidebar {
   width: 200px;
@@ -107,60 +87,6 @@ body {
   margin-bottom: 10px;
 }
 
-.main {
-  width: 600px;
-  padding: 10px;
-  background-image: url("/static/images/pawstra.png");
-  background-color: rgba(255, 255, 255, 0.5); /* Cambia el valor de la opacidad (0.5 en este ejemplo) */
-  background-size: 40%;
-}
-
-
-
-.main2 {
-  width:200px;
-  padding: 10px;
-}
-
-.main h2 {
-  margin-top: 0;
-}
-
-.main p {
-  text-align: justify;
-}
-
-.item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.item img {
-  width: 250px;
-  height: 200px; /* Imágenes cuadradas */
- 
-}
-
-.item-info {
-  margin-left: 20px;
-}
-
-.item-info h3 {
-  margin-top: 0;
-}
-
-.item-info p {
-  margin-bottom: 10px;
-}
-
-.footer {
-  height: 50px;
-  background-color: #aaaaaa;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .rightbar {
   width: 200px;
   background-color: #dba50e;
@@ -180,9 +106,64 @@ body {
 .rightbar li {
   margin-bottom: 10px;
 }
-/* Agrega estos estilos al final de tu archivo CSS */
 
-/* Estilos para la sección de mascotas perdidas */
+/* De los sidebars fin */
+
+.content {
+  display: flex;
+}
+
+/* Del elemento central del content inicio */
+
+.main {
+  width: 600px;
+  padding: 10px;
+  background-image: url("/static/images/pawstra.png");
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.5
+  ); /* Cambia el valor de la opacidad (0.5 en este ejemplo) */
+  background-size: 40%;
+}
+
+.main h2 {
+  margin-top: 0;
+}
+
+.main p {
+  text-align: justify;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.item img {
+  width: 200px;
+  height: 200px; /* Imágenes cuadradas */
+  border: 1px solid black; /* Borde negro para las imágenes */
+}
+
+.item-info {
+  margin-left: 20px;
+}
+
+.item-info h3 {
+  margin-top: 0;
+}
+
+.item-info p {
+  margin-bottom: 10px;
+}
+
+/* Del elemento central del content fin */
+
+/* Estilos para la sección de mascotas perdidas inicio */
+
 .mascota-container {
   text-align: center;
   background-color: #edd371;
@@ -192,14 +173,26 @@ body {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilos para el cuadro de la mascota */
 .mascota {
   display: flex;
-  flex-direction: column;
   align-items: center;
 }
 
-/* Estilos para la imagen de la mascota */
+.mascota-imagen {
+  flex: 1;
+}
+
+.separador {
+  border-left: 2px solid black;
+  height: 100%;
+  margin: 0 20px;
+}
+
+.mascota-datos {
+  flex: 2;
+  text-align: left;
+}
+
 #imagen-mascota {
   max-width: 100%;
   height: auto;
@@ -208,21 +201,6 @@ body {
   margin-bottom: 10px;
 }
 
-.container2{
-  width: 40%;
-  max-width: 300px;
-  max-height: 600px;
-  border: 10px solid rgb(84, 92, 119);
-  text-align: center;
-  padding: 5px;
-  background-color: rgba(236, 194, 7,0.92); /* Cambiado a un color con transparencia */
-  color: #333;
-  font-family: 'Verdana', sans-serif;
-  border-radius: 150px;
-  margin-top: 5vh; /* Agregado margen superior para centrar verticalmente */
-}
-
-/* Estilos para el botón "Siguiente" */
 #siguiente {
   background-color: #5b86ff;
   color: white;
@@ -238,28 +216,32 @@ body {
   transform: scale(1.1);
 }
 
-
-
-.logo {
-  margin-top: 15px;
+.telefono {
+  background-color: #5b86ff;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-top: 10px;
 }
 
-.logo img {
-  width: 250px;
-}
+/* Estilos para la sección de mascotas perdidas fin */
 
-.form {
-  width: 600px;
-  margin: 15px auto;
-  padding: 15px;
-   /* Cambiado a un color con transparencia */
+/* De los forms inicio */
+
+form {
+  /* Cambiado a un color pastel con transparencia */
   color: #333;
   text-align: center;
-  font-family: 'Verdana', sans-serif;
+  font-family: "Comic Sans MS", cursive, sans-serif; /* Fuente vintage */
+  background-color: rgba(255, 255, 204, 0.8); /* Color de fondo pastel */
+  box-shadow: inset -5px -5px rgba(0, 0, 0, 0.2); /* Sombra interna */
+  border-radius: 20px; /* Bordes redondeados */
 }
 
 .form h2 {
   margin-top: 0;
+  font-size: 36px; /* Tamaño de fuente grande */
 }
 
 .form p {
@@ -268,7 +250,7 @@ body {
 
 .form label {
   display: block;
-  font-family: 'Verdana', sans-serif;
+  font-family: "Comic Sans MS", cursive, sans-serif; /* Fuente vintage */
   padding: 2px;
 }
 
@@ -281,17 +263,18 @@ body {
 .form input[type="date"] {
   width: 75%;
   border: none;
-  background-color: rgba(230, 194, 147, 0.841);
+  background-color: rgba(230, 194, 147, 0.841); /* Color de fondo pastel */
   padding: 10px;
   margin-bottom: 20px;
-  font-family: 'Verdana', sans-serif;
+  font-family: "Comic Sans MS", cursive, sans-serif; /* Fuente vintage */
   border-radius: 500px; /* Valor alto para hacerlos ovalados */
 }
 /* Estilo circular para el botón */
 .form button {
   width: 150px; /* Ancho deseado */
   height: 70px; /* Altura deseada */
-  background-color: #5b86ff;
+  margin-top: 20px;
+  text-align: center;
   color: rgb(43, 15, 15);
   border: none;
   border-radius: 10px;
@@ -302,7 +285,6 @@ body {
   background-size: 100% 100%;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
-
 
 /* Cambio de color al acercarse y agrandamiento del botón */
 .form button:hover {
@@ -317,14 +299,48 @@ body {
   vertical-align: top; /* Alineación superior para mantenerlos en línea */
 }
 
-/* Estilo para hacer zoom out */
-.zoom-out {
-  transform: scale(1);
-  transition: transform 0.5s ease; /* Agrega una transición suave */
+/* Estilo para los campos válidos */
+.form input[type="text"]:valid,
+.form input[type="file"]:valid,
+.form textarea:valid,
+.form select:valid,
+.form input[type="password"]:valid,
+.form input[type="date"]:valid {
+  border: solid green; /* Borde verde */
 }
 
-/* Estilo para hacer zoom in */
-.zoom-in {
-  transform: scaleX(1.15);
-  transition: transform 0.5s ease; /* Agrega una transición suave */
+/* Estilo para los campos inválidos o requeridos */
+.form input[type="text"]:invalid,
+.form input[type="file"]:invalid,
+.form textarea:invalid,
+.form select:invalid,
+.form input[type="password"]:invalid,
+.form input[type="date"]:invalid,
+.form input[type="text"]:required,
+.form input[type="file"]:required,
+.form textarea:required,
+.form select:required,
+.form input[type="password"]:required,
+.form input[type="date"]:required {
+  border: solid red; /* Borde rojo */
+}
+
+/* Estilo para el campo con foco */
+.form input[type="text"]:focus,
+.form input[type="file"]:focus,
+.form textarea:focus,
+.form select:focus,
+.form input[type="password"]:focus,
+.form input[type="date"]:focus {
+  outline-color: blue; /* Resaltado azul */
+}
+
+/* De los forms fin */
+
+.footer {
+  height: 50px;
+  background-color: #aaaaaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

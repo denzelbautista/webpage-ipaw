@@ -40,6 +40,21 @@ def perros():
     return render_template('perros.html')
 
 
+@app.route('/gatos', methods=['GET'])
+def gatos():
+    return render_template('gatos.html')
+
+
+@app.route('/aves', methods=['GET'])
+def aves():
+    return render_template('aves.html')
+
+
+@app.route('/notfound', methods=['GET'])
+def nf():
+    return render_template('estamostrabajando.html')
+
+
 # Run the app
 if __name__ == '__main__':
     app.run(debug=True)

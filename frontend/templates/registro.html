@@ -10,18 +10,19 @@
     <title>iPaw.net</title>
   </head>
   <html>
-    <body class = "zoom-in">
+    <body>
       <div class="container">
-        
         <div class="banner">
           <div class="logo">
             <!-- aqui colocaremos una imagen -->
             <img src="/static/images/ipawv2.png" />
           </div>
           <ul class="menu">
-            <li onclick="redirigirinicio()" >Inicio</li>
-            <li onclick="redirigirreserva()" >Reservar servicio</li>
-            <li onclick="redirigirregistro_m_perdidas()" >Reportar mascota perdida</li>
+            <li onclick="redirigirinicio()">Inicio</li>
+            <li onclick="redirigirreserva()">Reservar servicio</li>
+            <li onclick="redirigirregistro_m_perdidas()">
+              Reportar mascota perdida
+            </li>
             <li onclick="redirigirregistro()">¡Registrarse!</li>
             <li onclick="redirigirmascota()">Registrar mascota</li>
           </ul>
@@ -30,8 +31,11 @@
           <div class="sidebar">
             <h3>Bienvenido a iPaw</h3>
             <p>
-              Ipaw, sí como ICarly, es una página donde puedes darle a tu mascota los servicios que más le gusten como baños relajantes o largas caminatas.
-              También tenemos una sección para que nuestros usuarios registren mascotas perdidas y así ayudarlas a encontrar su hogar.
+              Ipaw, sí como ICarly, es una página donde puedes darle a tu
+              mascota los servicios que más le gusten como baños relajantes o
+              largas caminatas. También tenemos una sección para que nuestros
+              usuarios registren mascotas perdidas y así ayudarlas a encontrar
+              su hogar.
             </p>
             <img src="/static/images/cute.gif" alt="Perro" width="100%" />
             <h3>Son bienvenidos:</h3>
@@ -44,16 +48,14 @@
               <li><a href="#">Peces</a></li>
               <li><a href="#">Capibaras</a></li>
             </ul>
-            <img
-              src="/static/images/mari.gif"
-              alt="animls"
-              width="100%"
-            />
+            <img src="/static/images/mari.gif" alt="animls" width="100%" />
           </div>
           <div class="main">
             <div class="form">
               <h2>Registrarse</h2>
-              <p>Completa el siguiente formulario para crear tu cuenta en iPaw.</p>
+              <p>
+                Completa el siguiente formulario para crear tu cuenta en iPaw.
+              </p>
               <form id="regForm" action="#" method="post">
                 <div class="form-group">
                   <label for="nombre">Nombre:</label>
@@ -65,11 +67,26 @@
                 </div>
                 <div class="form-group">
                   <label for="contrasenia">Contraseña:</label>
-                  <input type="password" id="contrasenia" name="contrasenia" required />
+                  <!-- Agregamos los atributos minlength y pattern para la contraseña -->
+                  <input
+                    type="password"
+                    id="contrasenia"
+                    name="contrasenia"
+                    minlength="8"
+                    required
+                  />
                 </div>
                 <div class="form-group">
                   <label for="dni">DNI:</label>
-                  <input type="text" id="dni" name="dni" required />
+                  <!-- Agregamos los atributos minlength, maxlength, pattern y type para el DNI -->
+                  <input
+                    type="text"
+                    id="dni"
+                    name="dni"
+                    minlength="8"
+                    maxlength="8"
+                    required
+                  />
                 </div>
                 <div class="form-group">
                   <label for="direccion">Dirección:</label>
@@ -79,33 +96,16 @@
               <button id="btnSend" type="button" form="regForm">Enviar</button>
               <div id="mensaje"></div>
             </div>
-            
           </div>
           <div class="rightbar">
-            
             <h3>Contribuidores</h3>
             <ul>
               <li><a href="#">ddenzelz</a></li>
-              <img
-              src="/static/images/c3.png"
-              alt="Sponsor 2"
-              width="30%"
-            />
+              <img src="/static/images/c3.png" alt="Sponsor 2" width="30%" />
               <li><a href="#">karu</a></li>
-              <img
-              src="/static/images/c2.png"
-              alt="Sponsor 2"
-              width="30%"
-            />
+              <img src="/static/images/c2.png" alt="Sponsor 2" width="30%" />
               <li><a href="#">campama</a></li>
-              <img
-              src="/static/images/c1.png"
-              alt="Sponsor 2"
-              width="30%"
-            />
-
-
-              
+              <img src="/static/images/c1.png" alt="Sponsor 2" width="30%" />
             </ul>
             <h3>Novedades</h3>
             <ul>
@@ -113,8 +113,12 @@
               <li>
                 <a href="#">iPaw se asocia con la fundación Adopta un Amigo</a>
               </li>
-              <li><a href="#">iPaw saca buena nota en la entrega parcial de nube, profe lo dimos todo tqm gcolchado</a></li>
-              
+              <li>
+                <a href="#"
+                  >iPaw saca buena nota en la entrega parcial de nube, profe lo
+                  dimos todo tqm gcolchado</a
+                >
+              </li>
             </ul>
             <h3>Nuestros sponsors:</h3>
             <img
@@ -138,10 +142,6 @@
           <p>© 2000 iPaw. Todos los derechos reservados.</p>
         </div>
       </div>
-      
-    </script>
     </body>
   </html>
 </html>
-
-    

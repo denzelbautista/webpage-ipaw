@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="/static/images/ipaw.ico" />
     <!-- importamos los estilos y funciones js-->
-    <link rel="stylesheet" href="/static/css/styles.css" />
-    <script src="static/js/mscripts.js"></script>
+    <link rel="stylesheet" href="/static/css/trabajando.css" />
+    <script src="static/js/aves.js"></script>
     <title>iPaw.net</title>
   </head>
   <html>
@@ -54,59 +54,35 @@
             />
           </div>
           <div class="main">
-            <div class="form">
-              <h2>Registro de Mascotas por usuario</h2>
-              <p>
-                Completa el siguiente formulario para registrar a su mascota en
-                nuestra base de datos
-              </p>
-              <form
-                form
-                id="regMascotasForm"
-                action="URL_de_tu_API"
-                method="post"
-                enctype="multipart/form-data"
-              >
-                <div class="form-group">
-                  <label for="dni_usuario">DNI del Usuario:</label>
-                  <input
-                    type="text"
-                    id="dni_usuario"
-                    name="dni_usuario"
-                    required
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="nombre_mascota">Nombre de la Mascota:</label>
-                  <input
-                    type="text"
-                    id="nombre_mascota"
-                    name="nombre_mascota"
-                    required
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="animal">Animal:</label>
-                  <input type="text" id="animal" name="animal" required />
-                </div>
-                <div class="form-group">
-                  <label for="raza">Raza:</label>
-                  <input type="text" id="raza" name="raza" required />
-                </div>
-              </form>
-              <button id="btnSendMascotas" type="button">Enviar</button>
-              <div id="mensajeMascotas"></div>
+            <h2 id="categoriaTitulo">¡Estamos trabajando!</h2>
+            <p>
+              Disculpa, pero parece que el recurso que estás buscando no ha sido
+              encontrado. Estamos trabajando en nuevas funcionalidades que
+              estarán disponibles próximamente. ¡Por favor, vuelve pronto!
+            </p>
+            <div class="not-found-image">
+              <img
+                src="/static/images/notfound.png"
+                alt="Recurso no encontrado"
+                width="300"
+              />
             </div>
           </div>
+
           <div class="rightbar">
-            <h3>Contribuidores</h3>
+            <h3>Más información</h3>
             <ul>
-              <li><a href="#">ddenzelz</a></li>
-              <img src="/static/images/c3.png" alt="Sponsor 2" width="30%" />
-              <li><a href="#">karu</a></li>
-              <img src="/static/images/c2.png" alt="Sponsor 2" width="30%" />
-              <li><a href="#">campama</a></li>
-              <img src="/static/images/c1.png" alt="Sponsor 2" width="30%" />
+              <li><a href="#">Sobre nosotros</a></li>
+              <li><a href="#">Política de privacidad</a></li>
+              <li><a href="#">Términos y condiciones</a></li>
+              <li><a href="#">Contacto</a></li>
+            </ul>
+            <h3>Anuncios</h3>
+            <ul>
+              <li><a href="#">Promoción especial para nuevos usuarios</a></li>
+              <li><a href="#">Descubre las mejores ofertas de iPaw</a></li>
+              <li><a href="#">Participa en nuestro sorteo mensual</a></li>
+              <li><a href="#">Síguenos en nuestras redes sociales</a></li>
             </ul>
             <h3>Novedades</h3>
             <ul>
@@ -114,10 +90,10 @@
               <li>
                 <a href="#">iPaw se asocia con la fundación Adopta un Amigo</a>
               </li>
+              <li><a href="#">iPaw celebra su primer aniversario</a></li>
               <li>
                 <a href="#"
-                  >iPaw saca buena nota en la entrega parcial de nube, profe lo
-                  dimos todo tqm gcolchado</a
+                  >iPaw recibe el premio a la mejor página web de mascotas</a
                 >
               </li>
             </ul>

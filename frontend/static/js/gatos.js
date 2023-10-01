@@ -1,23 +1,41 @@
-function obtenerMascotas(tipoMascota) {
-  // Realiza una solicitud al servidor con el tipo de mascota específico
-  fetch(`/mascotas/${tipoMascota}`)
+function redirigirregistro_m_perdidas() {
+  window.location.href = "/registro_m_perdidas";
+}
+
+function redirigirregistro() {
+  window.location.href = "/registro";
+}
+
+function redirigirmascota() {
+  window.location.href = "/registro_m";
+}
+function redirigirreserva() {
+  window.location.href = "/reserva";
+}
+
+function redirigirinicio() {
+  window.location.href = "/";
+}
+
+// scripts-mascotas.js
+
+// Función para obtener y mostrar las mascotas de tipo "perro"
+function obtenerMascotas() {
+  fetch("http://127.0.0.1:5002/mascotas")
     .then((respuesta) => respuesta.json())
     .then((datos) => {
       if (datos.success && Array.isArray(datos.data)) {
-        const categoriaTitulo = document.getElementById("categoriaTitulo");
-        categoriaTitulo.textContent = `${
-          tipoMascota.charAt(0).toUpperCase() + tipoMascota.slice(1)
-        } Registrada :D`;
-
+        const mascotasPerro = datos.data.filter(
+          (mascota) => mascota.animal === "gato"
+        );
         const mascotasContainer = document.getElementById("mascotas-container");
-        mascotasContainer.innerHTML = ""; // Limpia el contenedor
 
-        datos.data.forEach((mascota) => {
+        mascotasPerro.forEach((mascota) => {
           const mascotaDiv = document.createElement("div");
           mascotaDiv.classList.add("mascota-container");
 
           const imagenMascota = document.createElement("img");
-          imagenMascota.src = `/static/images/${tipoMascota}.jpeg`; // Imagen por defecto según el tipo
+          imagenMascota.src = "/static/images/gato.jpeg"; // Imagen por defecto para perros
           imagenMascota.alt = "Mascota";
 
           const mascotaDatos = document.createElement("div");
@@ -46,10 +64,5 @@ function obtenerMascotas(tipoMascota) {
     });
 }
 
-// Llama a la función para obtener y mostrar las mascotas de un tipo específico cuando la página cargue
-window.addEventListener("load", () => {
-  // Obtiene el tipo de mascota de la URL y llama a obtenerMascotas con ese tipo
-  const path = window.location.pathname;
-  const tipoMascota = path.split("/").pop(); // Obtiene la última parte de la URL
-  obtenerMascotas(tipoMascota);
-});
+// Llama a la función para obtener y mostrar las mascotas de tipo "perro" cuando la página cargue
+window.addEventListener("load", obtenerMascotas);

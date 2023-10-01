@@ -1,0 +1,189 @@
+html {
+  filter: blur(0.7px);
+}
+
+body {
+  background-image: url("/static/images/paws.jpeg");
+  background-size: 30%;
+
+  font-family: "Comic Sans MS", cursive, sans-serif; /* Fuente vintage */
+  margin: 0;
+}
+
+.container {
+  background-color: white;
+  width: 1000px; /* Ancho fijo para simular un monitor antiguo */
+  margin: 0 auto;
+}
+
+/* Del banner inicio */
+
+.logo img {
+  width: 220px;
+}
+
+.banner {
+  height: 130px;
+  background-color: #5b86ff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.menu li {
+  width: 142px;
+  text-align: center;
+  padding-top: 12px;
+  justify-content: space-between;
+}
+
+.menu {
+  font-family: "Comic Sans MS", cursive, sans-serif; /* Fuente vintage */
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  margin: 5px;
+  height: 45px;
+  background-image: url(/static/images/items.png);
+  background-size: 100% 100%;
+}
+
+.menu a {
+  display: block;
+  line-height: 40px; /* Esta línea centra el texto verticalmente */
+  text-align: center; /* Esta línea centra el texto horizontalmente */
+}
+
+/* Del banner fin */
+
+/* De los sidebars inicio */
+
+.sidebar {
+  width: 200px;
+  background-color: #dba50e;
+  padding: 10px;
+}
+
+.sidebar h3 {
+  margin-top: 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.rightbar {
+  width: 200px;
+  background-color: #dba50e;
+  padding: 10px;
+}
+
+.rightbar h3 {
+  margin-top: 0;
+}
+
+.rightbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.rightbar li {
+  margin-bottom: 10px;
+}
+
+/* De los sidebars fin */
+
+.content {
+  display: flex;
+}
+
+/* Del elemento central del content inicio */
+
+.main {
+  width: 600px;
+  padding: 10px;
+  background-image: url("/static/images/pawstra.png");
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.5
+  ); /* Cambia el valor de la opacidad (0.5 en este ejemplo) */
+  background-size: 40%;
+}
+
+.main h2 {
+  margin-top: 0;
+}
+
+.main p {
+  text-align: justify;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.item img {
+  width: 200px;
+  height: 200px; /* Imágenes cuadradas */
+  border: 1px solid black; /* Borde negro para las imágenes */
+}
+
+.item-info {
+  margin-left: 20px;
+}
+
+.item-info h3 {
+  margin-top: 0;
+}
+
+.item-info p {
+  margin-bottom: 10px;
+}
+
+/* Del elemento central del content fin */
+
+/* para el main inicio */
+
+.main {
+  width: 600px;
+  padding: 10px;
+  background-color: #e8e8e8; /* Fondo gris claro */
+  border: 1px solid #ccc; /* Borde gris */
+  text-align: center; /* Texto centrado en el div */
+  font-size: 18px; /* Tamaño de fuente más grande */
+  color: #333; /* Color de texto oscuro */
+}
+
+.not-found-image {
+  margin-top: 20px; /* Espacio entre el mensaje y la imagen */
+}
+
+/* para el main fin */
+
+.footer {
+  height: 50px;
+  background-color: #aaaaaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
