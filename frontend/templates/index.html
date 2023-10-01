@@ -12,6 +12,7 @@
   <html>
     <body>
       <div class="container">
+        
         <div class="banner">
           <div class="logo">
             <!-- aqui colocaremos una imagen -->
@@ -20,7 +21,7 @@
           <ul class="menu">
             <li>Inicio</li>
             <li>Categorías</li>
-            <li>Vender</li>
+            <li onclick="redirigirregistro_m_perdidas()">Reportar mascota perdida</li>
             <li onclick="redirigirregistro()">¡Registrarse!</li>
             <li onclick="redirigirlogin()">¡Inicia sesión!</li>
           </ul>
@@ -52,6 +53,19 @@
             />
           </div>
           <div class="main">
+            <div class="mascota-container">
+              <div class="mascota">
+                  <img id="imagen-mascota" src="" alt="Mascota Perdida" />
+                  <div class="mascota-info">
+                      <h3 id="nombre">Nombre de la Mascota</h3>
+                      <p id="descripcion">Descripción de la Mascota</p>
+                      <p>Reportado por: <span id="usuario">Nombre de Usuario</span></p>
+                  </div>
+              </div>
+              <button id="siguiente" onclick="avanzarMascota()">Siguiente</button>
+          </div>
+
+            <!-- Fin del código para mostrar las mascotas perdidas -->
             <h2>Artículos destacados</h2>
             <p>
               Estos son algunos de los artículos más populares que puedes
@@ -151,6 +165,31 @@
           <p>© 2000 iPaw. Todos los derechos reservados.</p>
         </div>
       </div>
+      <script>
+        const mascotasPerdidas = [];
+
+        let indiceMascotaActual = 0;
+
+        function mostrarMascota() {
+            const mascotaActual = mascotasPerdidas[indiceMascotaActual];
+            document.getElementById("imagen-mascota").src = mascotaActual.image;
+            document.getElementById("nombre").textContent = mascotaActual.nombre;
+            document.getElementById("descripcion").textContent = mascotaActual.descripcion;
+            document.getElementById("usuario").textContent = mascotaActual.dni_usuario;
+        }
+
+        function avanzarMascota() {
+            indiceMascotaActual++;
+            if (indiceMascotaActual >= mascotasPerdidas.length) {
+                indiceMascotaActual = 0; // Vuelve al principio si llegamos al final
+            }
+            mostrarMascota();
+        }
+
+        mostrarMascota(); // Mostrar la primera mascota al cargar la página
+
+        document.getElementById("siguiente").addEventListener("click", avanzarMascota);
+    </script>
     </body>
   </html>
 </html>
