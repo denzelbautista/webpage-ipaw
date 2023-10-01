@@ -12,9 +12,6 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route ('/login', methods=['GET'])
-def login ():
-  return render_template ('login.html')
 
 @app.route ('/registro', methods=['GET'])
 def registro ():
@@ -25,9 +22,14 @@ def reserva ():
   return render_template ('reserva.html')
 
 
+
 @app.route ('/registro_m_perdidas', methods=['GET'])
 def regmp ():
   return render_template ('registro_m_perdidas.html')
+
+@app.route ('/registro_m', methods=['GET'])
+def regm():
+  return render_template ('registro_m.html')
 
 
 
