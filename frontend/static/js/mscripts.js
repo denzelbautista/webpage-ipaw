@@ -3,12 +3,24 @@ document.addEventListener("DOMContentLoaded", function () {
   const btnEnviar = document.getElementById("btnSendMascotas");
 
   btnEnviar.addEventListener("click", function () {
+    // Obtener los valores de los campos
+    let dniUsuario = document.getElementById("dni_usuario").value;
+    let nombreMascota = document.getElementById("nombre_mascota").value;
+    let animal = document.getElementById("animal").value;
+    let raza = document.getElementById("raza").value;
+
+    // Verificar si hay campos vacíos
+    if (!dniUsuario || !nombreMascota || !animal || !raza) {
+      alert("Por favor, complete todos los campos.");
+      return; // Detener el proceso si hay campos vacíos
+    }
+
     // Crear un objeto JSON con los datos del formulario
     let data = {
-      dni_usuario: document.getElementById("dni_usuario").value,
-      nombre: document.getElementById("nombre_mascota").value,
-      animal: document.getElementById("animal").value,
-      raza: document.getElementById("raza").value,
+      dni_usuario: dniUsuario,
+      nombre: nombreMascota,
+      animal: animal,
+      raza: raza,
     };
 
     // Enviar los datos a tu API utilizando fetch

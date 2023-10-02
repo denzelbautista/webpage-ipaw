@@ -14,6 +14,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # Modelos
+
+
 class Usuario(db.Model):
     __tablename__ = 'usuario'
     dni = db.Column(db.BigInteger, primary_key=True)
@@ -33,6 +35,7 @@ class Usuario(db.Model):
             "contrasenia": self.contrasenia,
             "direccion": self.direccion
         }
+
 
 class Mascota(db.Model):
     __tablename__ = 'mascota'
@@ -56,6 +59,7 @@ class Mascota(db.Model):
             "raza": self.raza
         }
 
+
 class Reserva(db.Model):
     __tablename__ = 'reserva'
     id = db.Column(db.String(36), primary_key=True, unique=True, default=lambda: str(
@@ -75,11 +79,12 @@ class Reserva(db.Model):
     def serialize(self):
         return {
             "dni_usuario": self.dni_usuario,
-            "nombre_mascota": self.nombre_mascota,
+            "id_mascota": self.id_mascota,
             "servicio": self.servicio,
             "f_inicio": self.f_inicio,
             "f_fin": self.f_fin
         }
+
 
 @app.route('/reservas', methods=["GET", "POST"])
 def get_post_reservas():
@@ -101,11 +106,12 @@ def get_post_reservas():
 
     return jsonify({'success': True, 'message': 'Reserva creada con éxito', 'data': nueva.serialize()}), 201
 
+
 @app.route('/reservas/<id>', methods=["GET", "PUT", "DELETE"])
 def get_put_delete_reservas(id):
     data = Reserva.query.get_or_404(id)
     json = request.get_json()
-    
+
     if request.method == 'GET':
         return jsonify({'success': True, 'data': data.serialize()})
 
@@ -125,5 +131,6 @@ def get_put_delete_reservas(id):
 
     return 'SUCCESS'
 
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=5004)
+    app.run(host='0.0.0.0', port=5004)

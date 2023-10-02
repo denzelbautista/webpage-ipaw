@@ -11,6 +11,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const image = document.getElementById("image").files[0];
     const descripcion = document.getElementById("descripcion").value;
 
+    // Verificar que no haya campos vacíos
+    if (!dniUsuario || !nombreMascota || !servicio || !fInicio || !fFin) {
+      alert("Por favor, complete todos los campos.");
+      return; // Detener el proceso si hay campos vacíos
+    }
+
     // Crear un objeto FormData para enviar datos y archivos
     const formData = new FormData();
     formData.append("dni_usuario", dniUsuario);
@@ -30,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Limpiar el formulario
         formulario.reset();
         // Redirigir al usuario a index.html después de enviar los datos
-        // window.location.href = "/";
+        window.location.href = "/";
       })
       .catch((error) => {
         console.error("Error al enviar los datos a la API:", error);

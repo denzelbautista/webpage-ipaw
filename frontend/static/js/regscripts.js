@@ -11,13 +11,26 @@ document.addEventListener("DOMContentLoaded", function () {
     // Prevenir el comportamiento por defecto del botón (enviar el formulario)
     e.preventDefault();
 
+    // Obtener los valores de los campos del formulario
+    var nombre = document.getElementById("nombre").value;
+    var apellido = document.getElementById("apellido").value;
+    var contrasenia = document.getElementById("contrasenia").value;
+    var dni = document.getElementById("dni").value;
+    var direccion = document.getElementById("direccion").value;
+
+    // Verificar que no haya campos vacíos
+    if (!nombre || !apellido || !contrasenia || !dni || !direccion) {
+      alert("Por favor, complete todos los campos.");
+      return; // Detener el proceso si hay campos vacíos
+    }
+
     // Crear un objeto JSON con los datos del formulario
-    let data = {
-      nombre: document.getElementById("nombre").value,
-      apellido: document.getElementById("apellido").value,
-      contrasenia: document.getElementById("contrasenia").value,
-      dni: document.getElementById("dni").value,
-      direccion: document.getElementById("direccion").value,
+    var data = {
+      nombre: nombre,
+      apellido: apellido,
+      contrasenia: contrasenia,
+      dni: dni,
+      direccion: direccion,
     };
 
     // Mostrar el objeto JSON en la consola (opcional)
@@ -35,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Limpiar el formulario
         form.reset();
 
-        //window.location.href = "/";
+        window.location.href = "/";
       })
       .catch((error) => {
         console.error("Error al enviar los datos a la API:", error);

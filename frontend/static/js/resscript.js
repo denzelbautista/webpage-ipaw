@@ -1,59 +1,101 @@
-// vamos a hacer que funcione el registro de usuarios
-// 1. capturar el evento submit del formulario
-// 2. prevenir el comportamiento por defecto
-// 3. capturar los datos del formulario
-// 4. validar los datos del formulario
-// 5. enviar los datos al backend
-// 6. recibir la respuesta del backend
-// 7. mostrar el mensaje de error o de éxito
-
-// Agregar un evento de DOMContentLoaded al objeto document
 document.addEventListener("DOMContentLoaded", function () {
-  // Obtener el elemento form por su id
   var form = document.getElementById("reservaForm");
-
-  // Obtener el botón de enviar por su id
   var btn = document.getElementById("btnReservar");
+  var table = document.querySelector(".reservas-table tbody");
 
-  // Agregar un evento de click al botón
-  btn.addEventListener("click", function (e) {
-    // Prevenir el comportamiento por defecto del botón (enviar el formulario)
-    e.preventDefault();
+  function cargarReservas() {
+    fetch("http://127.0.0.1:5004/reservas")
+      .then((response) => response.json())
+      .then((data) => {
+        table.innerHTML = "";
 
-    // Crear un objeto FormData con los datos del formulario
-    var formData = new FormData(form);
-
-    // Convertir el objeto FormData a un objeto JSON
-    var formJSON = Object.fromEntries(formData.entries());
-
-    // Mostrar el objeto JSON en la consola (opcional)
-    console.log(formJSON);
-
-    // Crear una función que reemplace los valores no válidos por null
-    function replacer(key, value) {
-      if (value === undefined || value === NaN || typeof value === "function") {
-        return null;
-      }
-      return value;
-    }
-
-    // Enviar los datos a tu API utilizando fetch
-    fetch("URL_de_tu_API", {
-      method: "POST",
-      body: formData,
-    })
-      .then(() => {
-        // Limpiar el formulario
-        formulario.reset();
-        // Redirigir al usuario a index.html después de enviar los datos
-        window.location.href = "/";
+        if (data.data) {
+          data.data.forEach(function (reserva) {
+            // Obtener información completa de la mascota usando su ID
+            fetch(`http://127.0.0.1:5002/mascotas/${reserva.id_mascota}`)
+              .then((response) => response.json())
+              .then((mascotaData) => {
+                // Verificar si se encontró la mascota
+                if (mascotaData.data) {
+                  var mascota = mascotaData.data;
+                  var row = table.insertRow();
+                  row.insertCell(0).textContent = mascota.nombre; // Mostrar el nombre de la mascota
+                  row.insertCell(1).textContent = reserva.servicio;
+                  row.insertCell(2).textContent = reserva.f_inicio;
+                  row.insertCell(3).textContent = reserva.f_fin;
+                } else {
+                  alert("No se encontró información de la mascota.");
+                }
+              })
+              .catch((error) => {
+                console.error(
+                  "Error al obtener información de la mascota:",
+                  error
+                );
+              });
+          });
+        }
       })
       .catch((error) => {
-        console.error("Error al enviar los datos a la API:", error);
+        console.error("Error al obtener las reservas:", error);
       });
-  });
-});
+  }
 
+  function obtenerIdMascotaPorNombre(nombreMascota, callback) {
+    fetch("http://127.0.0.1:5002/mascotas")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.data) {
+          const mascotaEncontrada = data.data.find(
+            (mascota) => mascota.nombre === nombreMascota
+          );
+          if (mascotaEncontrada) {
+            callback(mascotaEncontrada.id);
+          } else {
+            alert("La mascota no existe.");
+          }
+        }
+      })
+      .catch((error) => {
+        console.error("Error al obtener las mascotas:", error);
+      });
+  }
+
+  btn.addEventListener("click", function (e) {
+    e.preventDefault();
+    var formData = new FormData(form);
+    var nombreMascota = formData.get("id_mascota");
+
+    obtenerIdMascotaPorNombre(nombreMascota, function (idMascota) {
+      // Crear un objeto JSON con los datos del formulario
+      var reservaData = {
+        dni_usuario: formData.get("dni_usuario"),
+        id_mascota: idMascota,
+        servicio: formData.get("servicio"),
+        f_inicio: formData.get("f_inicio"),
+        f_fin: formData.get("f_fin"),
+      };
+
+      // Enviar los datos a la API de reservas utilizando fetch
+      fetch("http://127.0.0.1:5004/reservas", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(reservaData),
+      })
+        .then(() => {
+          form.reset();
+          cargarReservas();
+        })
+        .catch((error) => {
+          console.error("Error al enviar los datos a la API:", error);
+        });
+    });
+  });
+
+  cargarReservas();
+});
 
 function redirigirregistro_m_perdidas() {
   window.location.href = "/registro_m_perdidas";
